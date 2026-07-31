@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Laporan Praktikum - Portofolio Jovantri</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Jovantri</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portofolio.html">
+                            Portofolio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="laprak.html">
+                            Laprak
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kontak.html">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-5 mt-5">
+        <div class="container y2k-panel mb-5 p-4 mt-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold display-5 text-primary">Arsip Laporan Praktikum</h2>
+                <p class="text-muted">Daftar laporan praktikum pemrograman web yang telah diselesaikan</p>
+            </div>
+
+            <div id="laprak-cards-container"
+                class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+                <!-- Dynamic cards will be rendered here by JS -->
+                <div class="text-center py-5 w-100">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="text-muted mt-2 fw-semibold">Menghubungkan semua berkas praktikum...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= UNIFIED DYNAMIC TEMPLATE SHELL MODAL ================= -->
+    <div class="modal fade" id="dynamicLaprakModal" tabindex="-1" aria-labelledby="dynamicLaprakModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content modal-content-custom shadow-lg">
+                <!-- Header Modal -->
+                <div class="modal-header modal-header-custom text-white p-4 align-items-center">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-white text-primary rounded-circle p-2 me-3 d-flex align-items-center justify-content-center"
+                            style="width: 50px; height: 50px;">
+                            <i class="bi bi-journal-code fs-3"></i>
+                        </div>
+                        <div>
+                            <h4 class="modal-title fw-bold mb-0" id="dynamicModalTitle">Laporan Praktikum</h4>
+                            <small class="text-white-50" id="dynamicModalSubtitle">Memuat detail laporan...</small>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <!-- Dynamic Content Container -->
+                <div class="modal-body p-4 bg-light" id="dynamicModalBody">
+                    <!-- Loading Spinner -->
+                    <div class="text-center py-5 my-5">
+                        <div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="text-muted mt-3 fw-semibold">Menghubungkan berkas data praktikum...</p>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer bg-white border-0 p-3">
+                    <button type="button" class="btn btn-secondary rounded-pill px-4"
+                        data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="y2k-footer pt-5 pb-4 mt-5">
+        <div class="container text-center text-md-start">
+            <div class="row text-center text-md-start">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold text-warning">
+                        Tentang Website
+                    </h5>
+                    <p>
+                        Website ini dibuat untuk memenuhi kebutuhan pribadi dan tugas mata kuliah Desain Web.
+                    </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold text-warning">
+                        Menu
+                    </h5>
+                    <p>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </p>
+                    <p>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </p>
+                    <p>
+                        <a href="portofolio.html">
+                            Portofolio
+                        </a>
+                    </p>
+                    <p>
+                        <a href="laprak.html">
+                            Laprak
+                        </a>
+                    </p>
+                    <p>
+                        <a href="kontak.html">
+                            Contact
+                        </a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold text-warning">
+                        Hubungi Saya
+                    </h5>
+                    <p>
+                        <i class="bi bi-geo-alt me-3"></i>
+                        Padang, Indonesia
+                    </p>
+                    <p>
+                        <i class="bi bi-envelope me-3"></i>
+                        jovuelimanuel@gmail.com
+                    </p>
+                    <p>
+                        <i class="bi bi-phone me-3"></i>
+                        +62 823 2538 5089
+                    </p>
+                    <div class="mt-4">
+                        <a href="https://www.instagram.com/imanuelgrande/" target="_blank"
+                            class="btn btn-outline-light btn-floating m-1 rounded-circle">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://x.com/joovzxaa" target="_blank"
+                            class="btn btn-outline-light btn-floating m-1 rounded-circle">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="https://id.linkedin.com/in/jovantri-immanuel-3b011b31b" target="_blank"
+                            class="btn btn-outline-light btn-floating m-1 rounded-circle">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p class="text-center text-md-start">
+                        © 2025 Copyright: <strong class="text-warning">
+                            Jovantri Immanuel Gulo
+                        </strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Berkas Data Laporan Praktikum -->
+    <script src="content/laprak/pekan6.js"></script>
+    <script src="content/laprak/pekan7.js"></script>
+    <script src="content/laprak/pekan8.js"></script>
+    <script src="content/laprak/pekan9.js"></script>
+
+    <script>
+        function loadLaprakData(pekanNumber) {
+            const modalBody = document.getElementById('dynamicModalBody');
+            const modalTitle = document.getElementById('dynamicModalTitle');
+            const modalSubtitle = document.getElementById('dynamicModalSubtitle');
+
+            // 1. Tampilkan loading spinner bawaan
+            modalBody.innerHTML = `
+            <div class="text-center py-5 my-5">
+                <div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="text-muted mt-3 fw-semibold">Mengekstrak data praktikum pekan ${pekanNumber}...</p>
+            </div>
+        `;
+
+            // 2. Set title & subtitle default
+            modalTitle.innerText = `Laporan Praktikum Pekan ${pekanNumber}`;
+            modalSubtitle.innerText = "Memuat...";
+
+            // 3. Tampilkan modal shell induk
+            const myModal = new bootstrap.Modal(document.getElementById('dynamicLaprakModal'));
+            myModal.show();
+
+            // 4. Jika data sudah ter-load sebelumnya di memory (seharusnya sudah oleh auto-loader), langsung render!
+            if (window.laprakData && window.laprakData[pekanNumber]) {
+                renderLaprakHTML(window.laprakData[pekanNumber]);
+                return;
+            }
+
+            // 5. Fallback dinamis jika ada penundaan pemuatan berkas
+            const scriptId = `script-pekan-${pekanNumber}`;
+            let scriptElement = document.getElementById(scriptId);
+
+            if (scriptElement) {
+                scriptElement.remove(); // Hapus cache script sebelumnya jika ada kegagalan
+            }
+
+            scriptElement = document.createElement('script');
+            scriptElement.id = scriptId;
+            scriptElement.src = `content/laprak/pekan${pekanNumber}.js`;
+
+            scriptElement.onload = function () {
+                if (window.laprakData && window.laprakData[pekanNumber]) {
+                    renderLaprakHTML(window.laprakData[pekanNumber]);
+                } else {
+                    showLoadError(pekanNumber);
+                }
+            };
+
+            scriptElement.onerror = function () {
+                showLoadError(pekanNumber);
+            };
+
+            document.head.appendChild(scriptElement);
+        }
+
+        function showLoadError(pekanNumber) {
+            const modalBody = document.getElementById('dynamicModalBody');
+            modalBody.innerHTML = `
+            <div class="text-center py-5 my-5 text-danger">
+                <i class="bi bi-exclamation-triangle-fill display-2 mb-4 d-block animate-bounce"></i>
+                <h3 class="fw-bold">Gagal Memuat Laporan</h3>
+                <p class="text-secondary mb-0 small">Berkas data 'pekan${pekanNumber}.js' tidak ditemukan atau format data rusak.</p>
+                <div class="mt-4">
+                    <button type="button" class="btn btn-primary rounded-pill px-4" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        `;
+        }
+
+        function renderLaprakHTML(data) {
+            const modalBody = document.getElementById('dynamicModalBody');
+            const modalTitle = document.getElementById('dynamicModalTitle');
+            const modalSubtitle = document.getElementById('dynamicModalSubtitle');
+
+            modalTitle.innerText = `Laporan Praktikum Pekan ${data.pekan}`;
+            modalSubtitle.innerText = data.title;
+
+            // Jika statusnya coming_soon, tampilkan placeholder premium
+            if (data.status === "coming_soon") {
+                modalBody.innerHTML = `
+                <div class="text-center py-5 my-5">
+                    <i class="bi bi-hourglass-split text-primary display-2 mb-4 d-block animate-pulse"></i>
+                    <h3 class="fw-bold text-primary mb-2">${data.title} Belum Tersedia</h3>
+                    <p class="text-secondary max-width-500 mx-auto mb-0" style="max-width: 550px; line-height: 1.7;">${data.message}</p>
+                </div>
+            `;
+                return;
+            }
+
+            // RAKIT SIDEBAR Centang Tujuan Praktikum (Premium Checklist Dashboard Style)
+            let tujuanHTML = '';
+            if (data.tujuan && data.tujuan.length > 0) {
+                data.tujuan.forEach(item => {
+                    tujuanHTML += `
+                    <div class="tujuan-item-wrap shadow-xs">
+                        <div class="tujuan-icon-box">
+                            <i class="bi bi-check-lg"></i>
+                        </div>
+                        <span class="text-secondary small fw-medium" style="line-height: 1.5; font-size: 0.85rem;">${item}</span>
+                    </div>
+                `;
+                });
+            }
+
+            // RAKIT TIMELINE LANGKAH KANAN (TUTORIAL UTAMA)
+            let langkahHTML = '';
+            if (data.langkahLangkah && data.langkahLangkah.length > 0) {
+                data.langkahLangkah.forEach(step => {
+                    // Bungkus gambar (bisa satu atau banyak) ke dalam bingkai macOS
+                    let imagesHTML = '';
+                    if (step.gambar) {
+                        const gambarArray = Array.isArray(step.gambar) ? step.gambar : [step.gambar];
+                        gambarArray.forEach((imgSrc, idx) => {
+                            imagesHTML += `
+                            <div class="screenshot-window mt-3">
+                                <div class="screenshot-header d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center" style="gap: 6px;">
+                                        <span class="window-dot red"></span>
+                                        <span class="window-dot yellow"></span>
+                                        <span class="window-dot green"></span>
+                                    </div>
+                                    <span class="text-muted font-monospace" style="font-size: 0.65rem; font-weight: 500;">Screenshot ${idx + 1}</span>
+                                </div>
+                                <div class="screenshot-body text-center">
+                                    <img src="${imgSrc}" alt="Langkah ${step.nomor} - Gambar ${idx + 1}" class="img-fluid">
+                                </div>
+                            </div>
+                        `;
+                        });
+                    }
+
+                    langkahHTML += `
+                    <div class="timeline-step-item">
+                        <div class="timeline-step-icon shadow-sm">${step.nomor}</div>
+                        <div class="timeline-step-content">
+                            <div class="step-card-wrap shadow-xs">
+                                <p class="step-desc-text mb-2">
+                                    <strong>Langkah Ke-${step.nomor}:</strong> ${step.deskripsi}
+                                </p>
+                                ${imagesHTML}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                });
+            }
+
+            // RAKIT LAHTIHAN/TUGAS LANGKAH (Jika Ada)
+            let latihanHTML = '';
+            if (data.latihan && data.latihan.length > 0) {
+                let latihanStepsHTML = '';
+                data.latihan.forEach(step => {
+                    let imagesHTML = '';
+                    if (step.gambar) {
+                        const gambarArray = Array.isArray(step.gambar) ? step.gambar : [step.gambar];
+                        gambarArray.forEach((imgSrc, idx) => {
+                            imagesHTML += `
+                            <div class="screenshot-window mt-3">
+                                <div class="screenshot-header d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center" style="gap: 6px;">
+                                        <span class="window-dot red"></span>
+                                        <span class="window-dot yellow"></span>
+                                        <span class="window-dot green"></span>
+                                    </div>
+                                    <span class="text-muted font-monospace" style="font-size: 0.65rem; font-weight: 500;">Latihan Screenshot ${idx + 1}</span>
+                                </div>
+                                <div class="screenshot-body text-center">
+                                    <img src="${imgSrc}" alt="Latihan ${step.nomor} - Gambar ${idx + 1}" class="img-fluid">
+                                </div>
+                            </div>
+                        `;
+                        });
+                    }
+
+                    latihanStepsHTML += `
+                    <div class="timeline-step-item">
+                        <div class="timeline-step-icon shadow-sm">${step.nomor}</div>
+                        <div class="timeline-step-content">
+                            <div class="step-card-wrap shadow-xs" style="border-left: 4px solid var(--neon-pink) !important;">
+                                <p class="step-desc-text mb-2">
+                                    <strong>Latihan/Tugas Ke-${step.nomor}:</strong> ${step.deskripsi}
+                                </p>
+                                ${imagesHTML}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                });
+
+                latihanHTML = `
+                <!-- Card Latihan/Tugas Praktikum (Dinamis) -->
+                <div class="card y2k-panel p-2 mb-4" style="border-top: 4px solid var(--neon-pink) !important;">
+                    <div class="card-body p-3">
+                        <h4 class="card-title fw-bold mb-4 pb-2 border-bottom text-primary">
+                            <i class="bi bi-laptop me-2"></i>Latihan & Tugas Praktikum
+                        </h4>
+                        <div class="timeline-steps">
+                            ${latihanStepsHTML}
+                        </div>
+                    </div>
+                </div>
+            `;
+            }
+
+            // INJECT LAYOUT STRUKTUR UTAMA KEDALAM MODAL BODY
+            modalBody.innerHTML = `
+            <div class="container-fluid py-2">
+                <!-- Detail Header Laporan -->
+                <div class="row align-items-center mb-4 pb-3 border-bottom g-3">
+                    <div class="col-md-8">
+                        <span class="badge bg-primary mb-2 px-3 py-2 fw-bold" style="font-size: 0.75rem;">
+                            Modul Praktikum Pekan ${data.pekan}
+                        </span>
+                        <h2 class="fw-bold text-primary mb-1">${data.title}</h2>
+                        <p class="text-muted mb-0 small fw-semibold">${data.subject} • ${data.tanggal}</p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <a href="${data.github}" target="_blank"
+                            class="btn btn-dark rounded-pill px-4 shadow-sm transition-btn">
+                            <i class="bi bi-github me-2 text-white"></i>Repository GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Kolom Kiri: Sidebar Detail (Sticky + Pinned + Scrollable) -->
+                    <div class="col-lg-4 col-12">
+                        <div class="sticky-modal-sidebar">
+                            <!-- Card Pendahuluan -->
+                            <div class="card y2k-panel modal-sidebar-card pendahuluan-card mb-4 border-0 p-2">
+                                <div class="card-body p-3">
+                                    <h5 class="fw-bold text-primary mb-3">
+                                        <i class="bi bi-journal-text me-2"></i>Pendahuluan
+                                    </h5>
+                                    <p class="pendahuluan-text">
+                                        ${data.pendahuluan}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Card Tujuan -->
+                            <div class="card modal-sidebar-card mb-4 border-0">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold text-primary mb-3">
+                                        <i class="bi bi-bullseye me-2"></i>Tujuan Praktikum
+                                    </h5>
+                                    <div class="tujuan-list-container">
+                                        ${tujuanHTML}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card Modul Meta (Desktop Version: Hidden on mobile) -->
+                            <div class="card modal-sidebar-card mb-4 border-0 d-none d-lg-block">
+                                <div class="card-body p-4">
+                                    <h5 class="fw-bold text-primary mb-3">
+                                        <i class="bi bi-info-circle me-2"></i>Detail Modul
+                                    </h5>
+                                    <div class="info-sidebar-item">
+                                        <div class="info-label-box">
+                                            <i class="bi bi-book info-icon"></i>
+                                            <span>Mata Kuliah:</span>
+                                        </div>
+                                        <span class="badge-sidebar">${data.subject}</span>
+                                    </div>
+                                    <div class="info-sidebar-item">
+                                        <div class="info-label-box">
+                                            <i class="bi bi-calendar-event info-icon"></i>
+                                            <span>Jadwal Pekan:</span>
+                                        </div>
+                                        <span class="badge-sidebar">Pekan ${data.pekan}</span>
+                                    </div>
+                                    <div class="info-sidebar-item">
+                                        <div class="info-label-box">
+                                            <i class="bi bi-tag info-icon"></i>
+                                            <span>Topik Utama:</span>
+                                        </div>
+                                        <span class="badge-sidebar">${data.title}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Kanan: Timeline Tutorial & Kesimpulan -->
+                    <div class="col-lg-8 col-12">
+                        <!-- Card Timeline Langkah -->
+                        <div class="card border-0 shadow-sm rounded-4 mb-4">
+                            <div class="card-body p-4">
+                                <h4 class="card-title fw-bold text-primary mb-4 pb-2 border-bottom">
+                                    <i class="bi bi-list-ol me-2"></i>Langkah-langkah Praktikum
+                                </h4>
+
+                                <div class="timeline-steps">
+                                    ${langkahHTML}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD LATIHAN & TUGAS (Dinamis) -->
+                        ${latihanHTML}
+
+                            <!-- Card Kesimpulan -->
+                            <div class="card y2k-panel p-2 mb-4">
+                                <div class="card-body p-3">
+                                    <h4 class="card-title fw-bold text-primary mb-3">
+                                        <i class="bi bi-lightbulb me-2"></i>Kesimpulan
+                                    </h4>
+                                    <div class="conclusion-quote">
+                                        <i class="bi bi-chat-quote-fill quote-icon"></i>
+                                        <p class="card-text text-secondary mb-0 italic" style="line-height: 1.75; font-style: italic;">
+                                            ${data.kesimpulan}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderAllLaprakCards() {
+            const container = document.getElementById('laprak-cards-container');
+            if (!container) return;
+
+            // Clear loading spinner
+            container.innerHTML = '';
+
+            if (!window.laprakData || Object.keys(window.laprakData).length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-5 w-100 text-danger">
+                        <i class="bi bi-exclamation-circle display-4 mb-3 d-block"></i>
+                        <h4 class="fw-bold">Gagal Memuat Laporan</h4>
+                        <p class="text-secondary mb-0 small">Tidak ada berkas laporan praktikum ditemukan.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Sort weeks ascending
+            const sortedPekans = Object.keys(window.laprakData).map(Number).sort((a, b) => a - b);
+
+            sortedPekans.forEach(pekan => {
+                const item = window.laprakData[pekan];
+                const cardCol = document.createElement('div');
+                cardCol.className = 'col d-flex';
+                cardCol.innerHTML = `
+                    <div class="card h-100 w-100 laprak-card y2k-panel p-1 border-0" onclick="loadLaprakData(${item.pekan})">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="laprak-icon-wrapper">
+                                        <i class="bi ${item.icon || 'bi-journal-code'}"></i>
+                                    </div>
+                                    <span class="badge-laprak">${item.badge || 'Laravel'}</span>
+                                </div>
+                                <h5 class="fw-bold mb-2">Pekan ${item.pekan}: ${item.title}</h5>
+                                <p class="text-muted small mb-3" style="line-height: 1.6;">${item.description}</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+                                <span class="text-muted font-monospace" style="font-size: 0.8rem;">${item.tanggal}</span>
+                                <button class="btn btn-sm btn-view-laprak rounded-pill px-3 py-1">
+                                    Lihat Laporan <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(cardCol);
+            });
+        }
+
+        // Initialize rendering when DOM is ready
+        window.addEventListener('DOMContentLoaded', () => {
+            renderAllLaprakCards();
+        });
+    </script>
+
+    <script src="content/y2k-effects.js"></script>
+</body>
+
+</html>

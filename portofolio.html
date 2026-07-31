@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Portofolio Jovantri</title>
+        <link rel="icon" href="images/icon.png" type="image/png">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="css/custom.css">
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="#">Jovantri</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">
+                                About
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="portofolio.html">
+                                Portofolio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="laprak.html">
+                                Laprak
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kontak.html">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section id="portofolio" class="py-5">
+            <div class="container y2k-panel my-5">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold text-primary">Karya yang Saya Kerjakan</h2>
+                    <p class="text-muted">Berikut adalah beberapa project yang telah saya kerjakan</p>
+                </div>
+                <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active rounded-pill px-4" id="pills-dbd-tab" data-bs-toggle="pill" data-bs-target="#pills-dbd" type="button" role="tab">
+                            Bot Discord Developer
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-pill px-4" id="pills-rjp-tab" data-bs-toggle="pill" data-bs-target="#pills-rjp" type="button" role="tab">
+                            Random Java Project
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-dbd" role="tab-panel">
+                        <div class="row g-4">
+                            <div class="col md-4">
+                                <div class="card h-100 y2k-panel p-2">
+                                    <img src="images/project1.png" class="card-img-top y2k-img-frame border-0 shadow-none mb-3" alt="Project 1">
+                                    <div class="card-body p-2">
+                                        <span class="badge bg-primary mb-2">Discord.js</span>
+                                        <h5 class="card-title text-primary fw-bold">Template Discord.js Bot Discord</h5>
+                                        <p class="card-text text-muted">Template pembuatan bot discord berbasis discord.js (dokumentasi pribadi).</p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 pb-2 px-2">
+                                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalProject1">
+                                            Lihat Detail
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col md-4">
+                                <div class="card h-100 y2k-panel p-2">
+                                    <img src="images/project2.png" class="card-img-top y2k-img-frame border-0 shadow-none mb-3" alt="Project 2">
+                                    <div class="card-body p-2">
+                                        <span class="badge bg-primary mb-2">Discord JDA</span>
+                                        <h5 class="card-title text-primary fw-bold">Discord Bot Template with JDA</h5>
+                                        <p class="card-text text-muted">
+                                            Template pembuatan bot discord berbasis JDA (Java Discord API) (dokumentasi pribadi).
+                                        </p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 pb-2 px-2">
+                                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalProject2">
+                                            Lihat Detail
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col md-4">
+                                <div class="card h-100 y2k-panel p-2">
+                                    <img src="images/project3.png" class="card-img-top y2k-img-frame border-0 shadow-none mb-3" alt="Project 3">
+                                    <div class="card-body p-2">
+                                        <span class="badge bg-primary mb-2">Discord.py</span>
+                                        <h5 class="card-title text-primary fw-bold">Todoroki Shouto Bot Discord</h5>
+                                        <p class="card-text text-muted">
+                                            Template membuat bot discord karakter dengan nama Todoroki Shouto (dokumentasi pribadi).
+                                        </p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 pb-2 px-2">
+                                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalProject3">
+                                            Lihat Detail
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-rjp" role="tabpanel">
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="card h-100 y2k-panel p-2">
+                                    <img src="images/project4.png" class="card-img-top y2k-img-frame border-0 shadow-none mb-3" alt="Project 4">
+                                    <div class="card-body p-2">
+                                        <span class="badge bg-primary mb-2">Java</span>
+                                        <h5 class="card-title text-primary fw-bold">Calculator GUI</h5>
+                                        <p class="card-text text-muted">Membuat GUI Kalkulator menggunakan Java Swing dan JFrame.</p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 pb-2 px-2">
+                                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalProject4">
+                                            Lihat Detail
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 y2k-panel p-2">
+                                    <img src="images/project5.png" class="card-img-top y2k-img-frame border-0 shadow-none mb-3" alt="Project 5">
+                                    <div class="card-body p-2">
+                                        <span class="badge bg-primary mb-2">Java</span>
+                                        <h5 class="card-title text-primary fw-bold">GUI Razia Motor</h5>
+                                        <p class="card-text text-muted">Membuat GUI Aplikasi Razia Motor Online menggunakan Java Swing dan JFrame.</p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 pb-2 px-2">
+                                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalProject5">
+                                            Lihat Detail
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm">
+                                    <img src="images/project6.png" class="card-img-top" alt="Project 6">
+                                    <div class="card-body">
+                                        <span class="badge bg-primary mb-2">Java</span>
+                                        <h5 class="card-title">GUI Aritmatika</h5>
+                                        <p class="card-text text-muted">Membuat GUI Aritmatika (Operasi Matematika) menggunakan Java Swing dan JFrame.</p>
+                                    </div>
+                                    <div class="card-footer bg-white border-0 pb-4">
+                                        <button type="button" class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#modalProject6">
+                                            Lihat Detail
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="modal fade" id="modalProject1" tabIndex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">
+                            Detail: Discord Bot Template
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="images/project1.png" class="img-fluid rounded mb-3" alt="Detail">
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Deskripsi Lengkap:</strong></p>
+                                <p>Template Bot Discord yang berdasar pada library JavaScript yaitu Discord.js. Memiliki fitur untuk folder commands, handler, dan integrasi package yang baik.</p>
+                                <p><strong>Teknologi:</strong></p>
+                                <ul>
+                                    <li>JavaScript (Discord.js)</li>
+                                    <li>JSON</li>
+                                </ul>
+                                <p><strong>Tahun:</strong> 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <a href="https://github.com/Joovzx/Discord-Bot" target="_blank" class="btn btn-success">Lihat Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalProject2" tabIndex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">
+                            Detail: Discord Bot Template
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="images/project2.png" class="img-fluid rounded mb-3" alt="Detail">
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Deskripsi Lengkap:</strong></p>
+                                <p>Template Bot Discord yang berdasar pada library Java yaitu JDA (Java Discord API). Memiliki fitur untuk folder commands, handler, dan integrasi package yang baik, selain itu membantu dalam mengimplementasikan bahasa pemrograman Java pada pembuatan bot discord.</p>
+                                <p><strong>Teknologi:</strong></p>
+                                <ul>
+                                    <li>Java (Maven) (JDA)</li>
+                                    <li>XML</li>
+                                </ul>
+                                <p><strong>Tahun:</strong> 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <a href="https://github.com/Joovzx/jda-discordbot" target="_blank" class="btn btn-success">Lihat Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalProject3" tabIndex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">
+                            Detail: Discord Bot Template
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="images/project3.png" class="img-fluid rounded mb-3" alt="Detail">
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Deskripsi Lengkap:</strong></p>
+                                <p>Template Bot Discord yang berdasar pada library Python yaitu Discord.py. Memiliki fitur untuk folder commands, handler, dan integrasi package yang baik, selain itu menghadirkan karakter anime, yaitu Todoroki Shouto pada pembuatan bot discord.</p>
+                                <p><strong>Teknologi:</strong></p>
+                                <ul>
+                                    <li>Python (Discord.py)</li>
+                                </ul>
+                                <p><strong>Tahun:</strong> 2020 (Covid Era)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <a href="https://github.com/Jovantri10/TodorokiShouto" target="_blank" class="btn btn-success">Lihat Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalProject4" tabIndex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">
+                            Detail: GUI Kalkulator
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="images/project4.png" class="img-fluid rounded mb-3" alt="Detail">
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Deskripsi Lengkap:</strong></p>
+                                <p>Sistem kalkulator yang dibuat dari GUI Swing dari Java dengan JFrame, memudahkan dalam menghitung dan mencari jawaban operasi perhitungan yang akurat dan baik.</p>
+                                <p><strong>Teknologi:</strong></p>
+                                <ul>
+                                    <li>Java (JFrame)</li>
+                                </ul>
+                                <p><strong>Tahun:</strong> 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <a href="https://github.com/Jovuel/2024-2-alpro-2411532014/blob/master/prakalpro_2_2411532014/src/pekan8/Calculator.java" target="_blank" class="btn btn-success">Lihat Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalProject5" tabIndex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">
+                            Detail: GUI Razia Motor
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="images/project5.png" class="img-fluid rounded mb-3" alt="Detail">
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Deskripsi Lengkap:</strong></p>
+                                <p>Sistem GUI penilangan/razia motor secara online dengan menggunakan Java Swing dan JFrame, membuat sebuah sistem razia motor online yang sangat basic, namun dengan logic yang baik.</p>
+                                <p><strong>Teknologi:</strong></p>
+                                <ul>
+                                    <li>Java (JFrame)</li>
+                                </ul>
+                                <p><strong>Tahun:</strong> 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <a href="https://github.com/Jovuel/2024-2-alpro-2411532014/blob/master/prakalpro_2_2411532014/src/pekan8/Quiz.java" target="_blank" class="btn btn-success">Lihat Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalProject6" tabIndex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">
+                            Detail: GUI Aritmatika
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="images/project6.png" class="img-fluid rounded mb-3" alt="Detail">
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Deskripsi Lengkap:</strong></p>
+                                <p>Sistem GUI Aritmatika yang hampir mirip dengan kalkulator, namun memiliki fungsionalitas yang sama, dibangun dengan menggunakan Java Swing dan JFrame, membuat GUI Aritmatika menjadi GUI dasar dalam logika pembuatan GUI Kalkulator.</p>
+                                <p><strong>Teknologi:</strong></p>
+                                <ul>
+                                    <li>Java (JFrame)</li>
+                                </ul>
+                                <p><strong>Tahun:</strong> 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <a href="https://github.com/Jovuel/2024-2-alpro-2411532014/blob/master/prakalpro_2_2411532014/src/pekan7/Aritmatika.java" target="_blank" class="btn btn-success">Lihat Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="y2k-footer pt-5 pb-4 mt-5">
+            <div class="container text-center text-md-start">
+                <div class="row text-center text-md-start">
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h5 class="text-uppercase mb-4 fw-bold text-warning">
+                            Tentang Website
+                        </h5>
+                        <p>
+                            Website ini dibuat untuk memenuhi kebutuhan pribadi dan tugas mata kuliah Desain Web.
+                        </p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h5 class="text-uppercase mb-4 fw-bold text-warning">
+                            Menu
+                        </h5>
+                        <p>
+                            <a href="index.html">
+                                Home
+                            </a>
+                        </p>
+                        <p>
+                            <a href="about.html">
+                                About
+                            </a>
+                        </p>
+                        <p>
+                            <a href="portofolio.html">
+                                Portofolio
+                            </a>
+                        </p>
+                        <p>
+                            <a href="laprak.html">
+                                Laprak
+                            </a>
+                        </p>
+                        <p>
+                            <a href="kontak.html">
+                                Contact
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h5 class="text-uppercase mb-4 fw-bold text-warning">
+                            Hubungi Saya
+                        </h5>
+                        <p>
+                            <i class="bi bi-geo-alt me-3"></i>
+                            Padang, Indonesia
+                        </p>
+                        <p>
+                            <i class="bi bi-envelope me-3"></i>
+                            jovuelimanuel@gmail.com
+                        </p>
+                        <p>
+                            <i class="bi bi-phone me-3"></i>
+                            +62 823 2538 5089
+                        </p>
+                        <div class="mt-4">
+                            <a href="https://www.instagram.com/imanuelgrande/" target="_blank" class="btn btn-outline-light btn-floating m-1 rounded-circle">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a href="https://x.com/joovzxaa" target="_blank" class="btn btn-outline-light btn-floating m-1 rounded-circle">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                            <a href="https://id.linkedin.com/in/jovantri-immanuel-3b011b31b" target="_blank" class="btn btn-outline-light btn-floating m-1 rounded-circle">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-7 col-lg-8">
+                        <p class="text-center text-md-start">
+                            © 2025 Copyright: <strong class="text-warning">
+                                Jovantri Immanuel Gulo
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="content/y2k-effects.js"></script>
+    </body>
+</html>

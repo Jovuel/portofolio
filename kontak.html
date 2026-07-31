@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Portofolio Jovantri</title>
+        <link rel="icon" href="images/icon.png" type="image/png">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="css/custom.css">
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="#">Jovantri</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">
+                                About
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="portofolio.html">
+                                Portofolio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="laprak.html">
+                                Laprak
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="kontak.html">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section id="contact" class="py-5">
+            <div class="container">
+        
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold display-6 text-primary">Hubungi Saya ;)</h2>
+                    <p class="text-muted">Saya sangat siap mendengar ide hebat dari Anda</p>
+                </div>
+        
+                <div id="successAlert" class="alert alert-success alert-dismissible fade d-none shadow-sm mb-4" role="alert">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    <strong>Berhasil!</strong> Pesan Anda telah terkirim. Saya akan segera membalasnya.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+        
+                <div id="errorAlert" class="alert alert-danger alert-dismissible fade d-none shadow-sm mb-4" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    <strong>Mohon Maaf!</strong> Harap lengkapi semua kolom yang wajib diisi.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+        
+                <div class="card y2k-panel p-0 overflow-hidden">
+                    <div class="row g-0">
+        
+                        <div class="col-lg-7 bg-white p-5">
+                            <h3 class="fw-bold mb-4 text-primary">Kirim Pesan</h3>
+        
+                            <form id="contactForm" class="needs-validation" novalidate>
+        
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label fw-semibold">Nama Lengkap</label>
+                                        <input type="text" class="form-control y2k-input" id="name" placeholder="Jovantri Immanuel Gulo"
+                                            required>
+                                        <div class="invalid-feedback">Nama wajib diisi.</div>
+                                    </div>
+        
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label fw-semibold">Alamat Email</label>
+                                        <input type="email" class="form-control y2k-input" id="email"
+                                            placeholder="nama-anda@email.com" required>
+                                        <div class="invalid-feedback">Email tidak valid.</div>
+                                    </div>
+        
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label fw-semibold">No. WhatsApp</label>
+                                        <input type="tel" class="form-control y2k-input" id="phone" placeholder="+62 812 3456 7890"
+                                            required>
+                                        <div class="invalid-feedback">Nomor HP wajib diisi.</div>
+                                    </div>
+        
+                                    <div class="col-md-6">
+                                        <label for="subject" class="form-label fw-semibold">Subjek</label>
+                                        <select class="form-select y2k-input" id="subject" required>
+                                            <option selected disabled value="">Pilih Tujuan...</option>
+                                            <option value="project">Tawaran Project</option>
+                                            <option value="collab">Ajak Kolaborasi</option>
+                                            <option value="other">Lainnya</option>
+                                        </select>
+                                        <div class="invalid-feedback">Pilih salah satu subjek.</div>
+                                    </div>
+        
+                                    <div class="col-12">
+                                        <label for="message" class="form-label fw-semibold">Pesan Anda</label>
+                                        <textarea class="form-control y2k-input" id="message" rows="4"
+                                            placeholder="Tuliskan detail pesan Anda di sini..." required></textarea>
+                                        <div class="invalid-feedback">Pesan tidak boleh kosong.</div>
+                                    </div>
+        
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="terms" required>
+                                            <label class="form-check-label text-muted small" for="terms">
+                                                Saya menyetujui syarat dan ketentuan privasi data.
+                                            </label>
+                                            <div class="invalid-feedback">Anda harus mencentang kotak ini.</div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-12 mt-4">
+                                        <button type="submit"
+                                            class="btn btn-primary w-100 py-3 fw-bold rounded-3 shadow-sm transition-btn">
+                                            <i class="bi bi-send-fill me-2"></i> KIRIM SEKARANG
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+        
+                        <div class="col-lg-5 p-5 d-flex flex-column justify-content-between y2k-contact-info-panel">
+        
+                            <div>
+                                <h3 class="fw-bold mb-4 text-primary">Info Kontak</h3>
+                                <p class="mb-4 text-muted">Silakan hubungi saya melalui kontak di bawah atau kunjungi lokasi
+                                    saya.</p>
+        
+                                <div class="d-flex mb-3 align-items-center">
+                                    <div class="bg-primary bg-opacity-10 p-2 rounded-circle me-3 text-primary" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="bi bi-geo-alt-fill fs-5"></i>
+                                    </div>
+                                    <span>Padang</span>
+                                </div>
+        
+                                <div class="d-flex mb-3 align-items-center">
+                                    <div class="bg-primary bg-opacity-10 p-2 rounded-circle me-3 text-primary" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="bi bi-envelope-fill fs-5"></i>
+                                    </div>
+                                    <span>jovuelimanuel@gmail.com</span>
+                                </div>
+        
+                                <div class="d-flex mb-3 align-items-center">
+                                    <div class="bg-primary bg-opacity-10 p-2 rounded-circle me-3 text-primary" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="bi bi-telephone-fill fs-5"></i>
+                                    </div>
+                                    <span>+62 823 2538 5089</span>
+                                </div>
+        
+                                <div class="mt-4 pt-4 border-top border-dark border-opacity-10">
+                                    <h6 class="text-uppercase mb-3 fw-bold small opacity-75">Ikuti Saya</h6>
+                                    <div class="d-flex gap-2">
+                                        <a href="https://www.instagram.com/imanuelgrande/" target="_blank" class="btn btn-outline-dark rounded-circle btn-sm p-2" style="width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; box-shadow: none !important;"><i class="bi bi-instagram"></i></a>
+                                        <a href="https://id.linkedin.com/in/jovantri-immanuel-3b011b31b" target="_blank" class="btn btn-outline-dark rounded-circle btn-sm p-2" style="width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; box-shadow: none !important;"><i class="bi bi-linkedin"></i></a>
+                                        <a href="https://github.com/Joovzx" target="_blank" class="btn btn-outline-dark rounded-circle btn-sm p-2" style="width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; box-shadow: none !important;"><i class="bi bi-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="mt-4 rounded-3 overflow-hidden shadow-sm border border-white border-opacity-25">
+                                <iframe
+                                    src="https://maps.google.com/maps?width=600&height=400&hl=en&q=Universitas%20Andalas&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+                                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+        
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="y2k-footer pt-5 pb-4 mt-5">
+            <div class="container text-center text-md-start">
+                <div class="row text-center text-md-start">
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h5 class="text-uppercase mb-4 fw-bold text-warning">
+                            Tentang Website
+                        </h5>
+                        <p>
+                            Website ini dibuat untuk memenuhi kebutuhan pribadi dan tugas mata kuliah Desain Web.
+                        </p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h5 class="text-uppercase mb-4 fw-bold text-warning">
+                            Menu
+                        </h5>
+                        <p>
+                            <a href="index.html">
+                                Home
+                            </a>
+                        </p>
+                        <p>
+                            <a href="about.html">
+                                About
+                            </a>
+                        </p>
+                        <p>
+                            <a href="portofolio.html">
+                                Portofolio
+                            </a>
+                        </p>
+                        <p>
+                            <a href="laprak.html">
+                                Laprak
+                            </a>
+                        </p>
+                        <p>
+                            <a href="kontak.html">
+                                Contact
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h5 class="text-uppercase mb-4 fw-bold text-warning">
+                            Hubungi Saya
+                        </h5>
+                        <p>
+                            <i class="bi bi-geo-alt me-3"></i>
+                            Padang, Indonesia
+                        </p>
+                        <p>
+                            <i class="bi bi-envelope me-3"></i>
+                            jovuelimanuel@gmail.com
+                        </p>
+                        <p>
+                            <i class="bi bi-phone me-3"></i>
+                            +62 823 2538 5089
+                        </p>
+                        <div class="mt-4">
+                            <a href="https://www.instagram.com/imanuelgrande/" target="_blank" class="btn btn-outline-light btn-floating m-1 rounded-circle">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a href="https://x.com/joovzxaa" target="_blank" class="btn btn-outline-light btn-floating m-1 rounded-circle">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                            <a href="https://id.linkedin.com/in/jovantri-immanuel-3b011b31b" target="_blank" class="btn btn-outline-light btn-floating m-1 rounded-circle">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-7 col-lg-8">
+                        <p class="text-center text-md-start">
+                            © 2025 Copyright: <strong class="text-warning">
+                                Jovantri Immanuel Gulo
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script>
+            (() => {
+                'use strict'
+
+                const form = document.getElementById('contactForm');
+                const successAlert = document.getElementById('successAlert');
+                const errorAlert = document.getElementById('errorAlert');
+
+                form.addEventListener('submit', event => {
+                    successAlert.classList.add('d-none');
+                    errorAlert.classList.add('d-none');
+                    successAlert.classList.remove('show');
+                    errorAlert.classList.remove('show');
+
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        errorAlert.classList.remove('d-none');
+                        errorAlert.classList.add('show');
+                        errorAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        event.preventDefault();
+                        successAlert.classList.remove('d-none');
+                        successAlert.classList.add('show');
+                        form.reset();
+                        form.classList.remove('was-validated');
+                        successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+
+                    form.classList.add('was-validated');
+                }, false)
+            })()
+        </script>
+        <script src="content/y2k-effects.js"></script>
+    </body>
+</html>

@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portofolio Jovantri</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Jovantri</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portofolio.html">
+                            Portofolio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="laprak.html">
+                            Laprak
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kontak.html">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section d-flex align-items-center text-white py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!-- Kolom Kiri: Teks Selamat Datang -->
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="display-4 fw-bold mb-3">
+                        Selamat Datang di Portofolio Saya!
+                    </h1>
+                    <p class="lead mb-4">
+                        Hey there!<br>
+                        Saya, Jovantri Immanuel Gulo mahasiswa informatika.<br><br>
+                        <i>Welcome to my portofolio! Im interested in music and programming!</i>
+                    </p>
+                    <div class="d-flex justify-content-center justify-content-lg-start gap-2">
+                        <a href="portofolio.html" class="btn btn-light btn-lg">
+                            Lihat Karya
+                        </a>
+                        <a href="kontak.html" class="btn btn-outline-light btn-lg">
+                            Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan: Y2K Photo Stack Gallery (Interactive Idols Card Stack) -->
+                <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
+                    <div class="y2k-photo-stack-wrapper">
+                        <!-- Floating Y2K Stickers/Decorations around the stack -->
+                        <div class="y2k-sticker sticker-bunny float-sway">🐰</div>
+                        <div class="y2k-sticker sticker-star float-spin">✦</div>
+                        <div class="y2k-sticker sticker-heart float-sway">💖</div>
+                        <div class="y2k-sticker sticker-sparkle float-sway">✨</div>
+                        <div class="y2k-sticker sticker-flower float-spin">🌸</div>
+
+                        <div class="y2k-photo-stack" id="idol-photo-stack">
+                            <!-- Photo 3 (Bottom) -->
+                            <div class="y2k-photo-card card-3 y2k-border-style-2" onclick="rotateStack()">
+                                <img src="images/idol3.png" alt="Taylor Swift illustration">
+                                <!-- <div class="y2k-photo-badge">✦ Taylor Swift ✦</div> -->
+                            </div>
+                            <!-- Photo 2 (Middle) -->
+                            <div class="y2k-photo-card card-2 y2k-border-style-2" onclick="rotateStack()">
+                                <img src="images/idol2.png" alt="NewJeans illustration">
+                                <!--div class="y2k-photo-badge">🐰 NewJeans 🐰</div> -->
+                            </div>
+                            <!-- Photo 1 (Top) -->
+                            <div class="y2k-photo-card card-1 y2k-border-style-2" onclick="rotateStack()">
+                                <img src="images/idol1.png" alt="Ariana Grande illustration">
+                                <!-- div class="y2k-photo-badge">🌸 Ariana Grande 🌸</div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">
+                    About Me
+                </h2>
+                <p class="text-muted">
+                    Things that correlate with myself!
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4 border-0 shadow-sm service-card">
+                        <div class="card-body">
+                            <i class="bi bi-mortarboard fs-1 text-primary mb-3">
+                            </i>
+                            <h4 class="card-title fw-bold">
+                                Student
+                            </h4>
+                            <p class="card-text">
+                                Im a informatics student in Universitas Andalas (UNAND) for a 4 years and im kinda
+                                enjoying it. My favorite courses are Data Mining, the Internet of Things, Mathematical
+                                Logic, Calculus, English, and Programming Algorithms. That doesn't mean I don't enjoy
+                                the other courses though.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4 border-0 shadow-sm service-card">
+                        <div class="card-body">
+                            <i class="bi bi-music-note fs-1 text-primary mb-3">
+                            </i>
+                            <h4 class="card-title fw-bold">
+                                Music Listener
+                            </h4>
+                            <p class="card-text">
+                                I love listening to various genres of music, but here are the top-tier artists that I
+                                adore.
+                                Taylor Swift, Ariana Grande, Olivia Rodrigo, and even Lana Del Rey. I know it's a mix of
+                                emotions with this type of music, but I love it.<br><br>Oh! oh! and i love spanish
+                                to, especially i love listen to Rosalía because she's amazingg!! I'm trying to learn
+                                spanish, so yeah! :D
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4 border-0 shadow-sm service-card">
+                        <div class="card-body">
+                            <i class="bi bi-emoji-smile fs-1 text-primary mb-3">
+                            </i>
+                            <h4 class="card-title fw-bold">
+                                Hobbies
+                            </h4>
+                            <p class="card-text">
+                                I love playing volleyball, having fun around with people that i love, and maybe coding
+                                sometimes, reading a book too, i kinda love swimming tho because its cold and
+                                refreshing! and then i love watching some movies too!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Me, Myself, and <strong>Them</strong>.</h2>
+            </div>
+            <div class="y2k-carousel-container">
+                <div id="carouselExampleIndicator" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicator" data-bs-slide-to="0"
+                            class="active">
+                        </button>
+                        <button type="button" data-bs-target="#carouselExampleIndicator" data-bs-slide-to="1">
+                        </button>
+                        <button type="button" data-bs-target="#carouselExampleIndicator" data-bs-slide-to="2">
+                        </button>
+                        <button type="button" data-bs-target="#carouselExampleIndicator" data-bs-slide-to="3">
+                        </button>
+                        <button type="button" data-bs-target="#carouselExampleIndicator" data-bs-slide-to="4">
+                        </button>
+                        <button type="button" data-bs-target="#carouselExampleIndicator" data-bs-slide-to="5">
+                        </button>
+                        <button type="button" data-bs-target="#carouselExampleIndicator" data-bs-slide-to="6">
+                        </button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/slide-1.jpg" class="d-block w-100" alt="Photo 1">
+                            <div class="carousel-caption">
+                                <h5>Friends & Family</h5>
+                                <p>They are my everything, i love them.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/slide-2.jpg" class="d-block w-100" alt="Photo 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/slide-3.jpg" class="d-block w-100" alt="Photo 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/slide-4.jpg" class="d-block w-100" alt="Photo 4">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/slide-5.jpg" class="d-block w-100" alt="Photo 5">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/slide-6.jpg" class="d-block w-100" alt="Photo 6">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicator"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true">
+                        </span>
+                        <span class="visually-hidden">
+                            Previous
+                        </span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicator"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true">
+                        </span>
+                        <span class="visually-hidden">
+                            Next
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="y2k-footer pt-5 pb-4 mt-5">
+        <div class="container text-center text-md-start">
+            <div class="row text-center text-md-start">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold text-warning">
+                        Tentang Website
+                    </h5>
+                    <p>
+                        Website ini dibuat untuk memenuhi kebutuhan pribadi dan tugas mata kuliah Desain Web.
+                    </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold text-warning">
+                        Menu
+                    </h5>
+                    <p>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </p>
+                    <p>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </p>
+                    <p>
+                        <a href="portofolio.html">
+                            Portofolio
+                        </a>
+                    </p>
+                    <p>
+                        <a href="laprak.html">
+                            Laprak
+                        </a>
+                    </p>
+                    <p>
+                        <a href="kontak.html">
+                            Contact
+                        </a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold text-warning">
+                        Hubungi Saya
+                    </h5>
+                    <p>
+                        <i class="bi bi-geo-alt me-3"></i>
+                        Padang, Indonesia
+                    </p>
+                    <p>
+                        <i class="bi bi-envelope me-3"></i>
+                        jovuelimanuel@gmail.com
+                    </p>
+                    <p>
+                        <i class="bi bi-phone me-3"></i>
+                        +62 823 2538 5089
+                    </p>
+                    <div class="mt-4">
+                        <a href="https://www.instagram.com/imanuelgrande/" target="_blank"
+                            class="btn btn-outline-light btn-floating m-1 rounded-circle">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://x.com/joovzxaa" target="_blank"
+                            class="btn btn-outline-light btn-floating m-1 rounded-circle">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="https://id.linkedin.com/in/jovantri-immanuel-3b011b31b" target="_blank"
+                            class="btn btn-outline-light btn-floating m-1 rounded-circle">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p class="text-center text-md-start">
+                        © 2025 Copyright: <strong class="text-warning">
+                            Jovantri Immanuel Gulo
+                        </strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        let currentBorderStyle = 2;
+
+        function rotateStack() {
+            const stack = document.getElementById('idol-photo-stack');
+            if (!stack) return;
+
+            const topCard = stack.querySelector('.card-1');
+            const middleCard = stack.querySelector('.card-2');
+            const bottomCard = stack.querySelector('.card-3');
+
+            if (!topCard || !middleCard || !bottomCard) return;
+
+            // Trigger fly-away slide out animation on the top card
+            topCard.classList.add('fly-away');
+
+            // Delay z-index shift until slide-out animation reaches 50%
+            setTimeout(() => {
+                topCard.classList.remove('fly-away');
+
+                // Cycle classes: top becomes bottom, middle becomes top, bottom becomes middle
+                topCard.className = `y2k-photo-card card-3 y2k-border-style-${currentBorderStyle}`;
+                middleCard.className = `y2k-photo-card card-1 y2k-border-style-${currentBorderStyle}`;
+                bottomCard.className = `y2k-photo-card card-2 y2k-border-style-${currentBorderStyle}`;
+            }, 350); // Matches transitions in custom.css
+        }
+
+        // DYNAMIC Y2K BORDER DECORATION CYCLES (5 STYLES)
+        function cycleBorderStyles() {
+            const cards = document.querySelectorAll('.y2k-photo-card');
+            if (cards.length === 0) return;
+
+            // Advance: cycle 2 → 3 → 4 → 5 → 2
+            const oldClass = `y2k-border-style-${currentBorderStyle}`;
+            currentBorderStyle = currentBorderStyle >= 5 ? 2 : currentBorderStyle + 1;
+            const newClass = `y2k-border-style-${currentBorderStyle}`;
+
+            cards.forEach((card) => {
+                card.classList.remove(oldClass);
+                card.classList.add(newClass);
+            });
+
+            // Randomly change Y2K symbols on floating stickers
+            const stickerStar = document.querySelector('.sticker-star');
+            const stickerHeart = document.querySelector('.sticker-heart');
+            const stickerSparkle = document.querySelector('.sticker-sparkle');
+
+            const Y2KSymbols = ['✦', '✧', '★', '☆', '✨', '💖', '💝', '🌸', '🎀', '🍒'];
+            if (stickerStar) stickerStar.innerText = Y2KSymbols[Math.floor(Math.random() * Y2KSymbols.length)];
+            if (stickerHeart) stickerHeart.innerText = Y2KSymbols[Math.floor(Math.random() * Y2KSymbols.length)];
+            if (stickerSparkle) stickerSparkle.innerText = Y2KSymbols[Math.floor(Math.random() * Y2KSymbols.length)];
+        }
+
+        // Cycle style every 12 seconds
+        setInterval(cycleBorderStyles, 12000);
+    </script>
+    <script src="content/y2k-effects.js"></script>
+</body>
+
+</html>
