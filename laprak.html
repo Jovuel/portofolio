@@ -5,12 +5,273 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laporan Praktikum - Portofolio Jovantri</title>
+    <meta name="description" content="Arsip Laporan Praktikum Pemrograman Web dan Aplikasi Mobile oleh Jovantri Immanuel Gulo.">
     <link rel="icon" href="images/icon.png" type="image/png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/custom.css">
 
+    <style>
+        /* ========================
+           FOLDER EXPLORER STYLES
+           ======================== */
+
+        /* ---- Path Breadcrumb Bar ---- */
+        .explorer-path-bar {
+            background: var(--color-black);
+            border: var(--border-brutal);
+            box-shadow: var(--shadow-brutal);
+            padding: 0.6rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--color-green);
+            text-transform: none;
+            letter-spacing: 0.02em;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .explorer-path-bar .path-sep { color: var(--color-yellow); margin: 0 0.25rem; }
+        .path-crumb {
+            cursor: pointer;
+            color: var(--color-green);
+            transition: color 0.15s;
+        }
+        .path-crumb:hover { color: var(--color-yellow); text-decoration: underline; }
+        .path-crumb.active-crumb { color: var(--color-white); cursor: default; text-decoration: none; }
+
+        /* ---- View Panels ---- */
+        .explorer-view { display: none; }
+        .explorer-view.active { display: block; }
+
+        /* ---- Folder Grid ---- */
+        .folder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        /* ---- Individual Folder Item ---- */
+        .folder-item {
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            position: relative;
+        }
+        .folder-item:hover { transform: translate(-4px, -4px); }
+        .folder-item:active { transform: translate(2px, 2px); }
+
+        .folder-body {
+            border: var(--border-brutal);
+            box-shadow: var(--shadow-brutal);
+            padding: 2rem 1.5rem 1.5rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            min-height: 200px;
+        }
+        .folder-item:hover .folder-body {
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Folder Tab (classic folder tab shape) */
+        .folder-tab {
+            position: absolute;
+            top: -20px;
+            left: 16px;
+            height: 22px;
+            width: 80px;
+            border: var(--border-brutal);
+            border-bottom: none;
+            border-radius: 6px 6px 0 0;
+        }
+
+        /* Icon pixel style */
+        .folder-icon {
+            font-size: 4rem;
+            line-height: 1;
+            filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.9));
+            transition: transform 0.2s ease;
+        }
+        .folder-item:hover .folder-icon { transform: scale(1.15) rotate(-3deg); }
+
+        /* Folder Name */
+        .folder-name {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            text-align: center;
+            color: var(--color-black);
+        }
+
+        /* Folder Meta */
+        .folder-meta {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--color-black);
+            opacity: 0.7;
+            text-align: center;
+        }
+
+        /* Folder Chip/Status Badge */
+        .folder-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-family: var(--font-heading);
+            font-size: 0.6rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border: 2px solid var(--color-black);
+            text-transform: uppercase;
+        }
+
+        /* ---- Color Schemes per folder ---- */
+        /* Pemrograman Web → Blue + Yellow */
+        .folder-web .folder-body { background-color: #4D96FF; }
+        .folder-web .folder-tab  { background-color: #FFD93D; }
+        .folder-web .folder-badge { background-color: #FFD93D; color: var(--color-black); }
+        .folder-web .folder-name  { color: var(--color-white); text-shadow: 2px 2px 0 var(--color-black); }
+        .folder-web .folder-meta  { color: rgba(255,255,255,0.85); opacity: 1; }
+        .folder-web .folder-icon  { color: var(--color-white); }
+
+        /* Aplikasi Mobile → Purple + Green */
+        .folder-mobile .folder-body { background-color: #B983FF; }
+        .folder-mobile .folder-tab  { background-color: #6BCB77; }
+        .folder-mobile .folder-badge { background-color: #6BCB77; color: var(--color-black); }
+        .folder-mobile .folder-name  { color: var(--color-white); text-shadow: 2px 2px 0 var(--color-black); }
+        .folder-mobile .folder-meta  { color: rgba(255,255,255,0.85); opacity: 1; }
+        .folder-mobile .folder-icon  { color: var(--color-white); }
+
+        /* ---- Pixel scanline texture (subtle) ---- */
+        .folder-body::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 3px,
+                rgba(0,0,0,0.04) 3px,
+                rgba(0,0,0,0.04) 4px
+            );
+            pointer-events: none;
+        }
+
+        /* ---- Section Title ---- */
+        .section-title-pixel {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--color-black);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            border-bottom: var(--border-brutal);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ---- Back Button ---- */
+        .btn-back-folder {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            background: var(--color-white);
+            border: var(--border-brutal) !important;
+            box-shadow: 4px 4px 0 var(--color-black) !important;
+            color: var(--color-black) !important;
+            padding: 0.5rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border-radius: 0 !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .btn-back-folder:hover {
+            background: var(--color-yellow);
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--color-black) !important;
+        }
+        .btn-back-folder:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--color-black) !important;
+        }
+
+        /* ---- Coming Soon Panel ---- */
+        .coming-soon-panel {
+            background: var(--color-white);
+            border: var(--border-brutal);
+            box-shadow: var(--shadow-brutal);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .coming-soon-panel .cs-icon {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 1.5rem;
+            color: var(--color-purple);
+            filter: drop-shadow(4px 4px 0 var(--color-black));
+        }
+        .coming-soon-panel h3 {
+            font-size: 2rem;
+            color: var(--color-black);
+        }
+        .coming-soon-panel p {
+            color: var(--color-black);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        /* Pixel blink cursor */
+        @keyframes blink-cursor {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .blink { animation: blink-cursor 0.9s step-end infinite; }
+
+        /* ---- Laprak Cards Container ---- */
+        #laprak-cards-container .laprak-card { cursor: pointer; }
+
+        /* ---- Folder open pixel animation ---- */
+        @keyframes folder-open {
+            0% { transform: scale(0.92) rotate(-2deg); opacity: 0; }
+            60% { transform: scale(1.03) rotate(0.5deg); }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+        .explorer-view.active { animation: folder-open 0.3s ease forwards; }
+
+        /* ---- Status bar ---- */
+        .explorer-statusbar {
+            background: var(--color-black);
+            border: var(--border-brutal);
+            border-top: none;
+            padding: 0.35rem 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--color-green);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,7 +302,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="laprak.html">
-                            Laprak
+                            Laporan Praktikum
                         </a>
                     </li>
                     <li class="nav-item">
@@ -55,22 +316,107 @@
     </nav>
 
     <section class="py-5 mt-5">
-        <div class="container y2k-panel mb-5 p-4 mt-4">
+        <div class="container mt-4 mb-5">
+
+            <!-- Page Header -->
             <div class="text-center mb-5">
-                <h2 class="fw-bold display-5 text-primary">Arsip Laporan Praktikum</h2>
-                <p class="text-muted">Daftar laporan praktikum pemrograman web yang telah diselesaikan</p>
+                <h2 class="section-title-pixel">📂 Laporan Praktikum</h2>
+                <p class="text-muted" style="font-size: 0.9rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">
+                    Pilih folder mata kuliah untuk membuka arsip laporan
+                </p>
             </div>
 
-            <div id="laprak-cards-container"
-                class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
-                <!-- Dynamic cards will be rendered here by JS -->
-                <div class="text-center py-5 w-100">
-                    <div class="spinner-border text-success" role="status">
-                        <span class="visually-hidden">Loading...</span>
+            <!-- Explorer Path Bar -->
+            <div class="explorer-path-bar" id="explorerPathBar">
+                <i class="bi bi-terminal-fill me-1"></i>
+                <span class="path-crumb" id="crumbRoot" onclick="navigateTo('root')">C:\LAPORAN_PRAKTIKUM</span>
+                <span class="path-sep" id="pathSep1" style="display:none;">\</span>
+                <span class="path-crumb active-crumb" id="crumbFolder" style="display:none;"></span>
+                <span class="blink">█</span>
+            </div>
+
+            <!-- =================== VIEW: ROOT (Folder Picker) =================== -->
+            <div id="view-root" class="explorer-view active">
+                <div class="folder-grid">
+
+                    <!-- Folder: Pemrograman Web -->
+                    <div class="folder-item folder-web" id="folderPemWeb" onclick="openFolder('pemweb')" tabindex="0" role="button" aria-label="Buka folder Pemrograman Web">
+                        <div class="folder-tab"></div>
+                        <div class="folder-body">
+                            <span class="folder-badge">4 Files</span>
+                            <span class="folder-icon">🖥️</span>
+                            <span class="folder-name">Pemrograman Web</span>
+                            <span class="folder-meta">Desain Web • Pekan 6–9</span>
+                        </div>
                     </div>
-                    <p class="text-muted mt-2 fw-semibold">Menghubungkan semua berkas praktikum...</p>
+
+                    <!-- Folder: Aplikasi Mobile -->
+                    <div class="folder-item folder-mobile" id="folderAppMobile" onclick="openFolder('mobile')" tabindex="0" role="button" aria-label="Buka folder Aplikasi Mobile">
+                        <div class="folder-tab"></div>
+                        <div class="folder-body">
+                            <span class="folder-badge" style="background:#FFD93D;">1 File</span>
+                            <span class="folder-icon">📱</span>
+                            <span class="folder-name">Aplikasi Mobile</span>
+                            <span class="folder-meta">Flutter • Pekan 1</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
+            <!-- =================== VIEW: PEMROGRAMAN WEB =================== -->
+            <div id="view-pemweb" class="explorer-view">
+                <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+                    <button class="btn-back-folder" onclick="navigateTo('root')">
+                        <i class="bi bi-arrow-left"></i> Kembali
+                    </button>
+                    <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; background: #4D96FF; color: white; padding: 0.3rem 1rem; border: var(--border-brutal); box-shadow: 3px 3px 0 var(--color-black);">
+                        🖥️ Pemrograman Web
+                    </div>
+                </div>
+
+                <!-- Laprak Cards (generated by JS) -->
+                <div id="laprak-cards-container"
+                    class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-start">
+                    <!-- Dynamic cards will be rendered here by JS -->
+                    <div class="text-center py-5 w-100">
+                        <div class="spinner-border text-success" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="text-muted mt-2 fw-semibold">Menghubungkan semua berkas praktikum...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =================== VIEW: APLIKASI MOBILE =================== -->
+            <div id="view-mobile" class="explorer-view">
+                <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+                    <button class="btn-back-folder" onclick="navigateTo('root')">
+                        <i class="bi bi-arrow-left"></i> Kembali
+                    </button>
+                    <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; background: #B983FF; color: white; padding: 0.3rem 1rem; border: var(--border-brutal); box-shadow: 3px 3px 0 var(--color-black);">
+                        📱 Aplikasi Mobile
+                    </div>
+                </div>
+
+                <!-- Mobile Laprak Cards (generated by JS) -->
+                <div id="mobile-cards-container"
+                    class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-start">
+                    <div class="text-center py-5 w-100">
+                        <div class="spinner-border" style="color: #B983FF;" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="text-muted mt-2 fw-semibold">Memuat laporan praktikum mobile...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explorer Status Bar -->
+            <div class="explorer-statusbar mt-0">
+                <span id="statusBarLeft">📁 2 Objects</span>
+                <span id="statusBarRight">JOVANTRI FILE EXPLORER v2.0</span>
+            </div>
+
         </div>
     </section>
 
@@ -147,7 +493,7 @@
                     </p>
                     <p>
                         <a href="laprak.html">
-                            Laprak
+                            Laporan Praktikum
                         </a>
                     </p>
                     <p>
@@ -201,13 +547,98 @@
         </div>
     </footer>
 
-    <!-- Berkas Data Laporan Praktikum -->
+    <!-- Berkas Data Laporan Praktikum Pemrograman Web -->
     <script src="content/laprak/pekan6.js"></script>
     <script src="content/laprak/pekan7.js"></script>
     <script src="content/laprak/pekan8.js"></script>
     <script src="content/laprak/pekan9.js"></script>
 
+    <!-- Berkas Data Laporan Praktikum Aplikasi Mobile -->
+    <script src="content/laprak/mobile/pekan1.js"></script>
+
     <script>
+        /* ==========================================
+           EXPLORER NAVIGATION
+        ========================================== */
+        const views = ['root', 'pemweb', 'mobile'];
+        let currentView = 'root';
+
+        function navigateTo(viewId) {
+            // Hide all views
+            views.forEach(v => {
+                const el = document.getElementById('view-' + v);
+                if (el) el.classList.remove('active');
+            });
+
+            // Show target view
+            const target = document.getElementById('view-' + viewId);
+            if (target) target.classList.add('active');
+            currentView = viewId;
+
+            // Update breadcrumb
+            updateBreadcrumb(viewId);
+            updateStatusBar(viewId);
+        }
+
+        function openFolder(folderId) {
+            // If opening pemweb, make sure cards are rendered
+            if (folderId === 'pemweb') {
+                renderAllLaprakCards();
+            }
+            // If opening mobile, render mobile cards
+            if (folderId === 'mobile') {
+                renderAllMobileCards();
+            }
+            navigateTo(folderId);
+        }
+
+        function updateBreadcrumb(viewId) {
+            const sep1 = document.getElementById('pathSep1');
+            const crumbFolder = document.getElementById('crumbFolder');
+            const crumbRoot = document.getElementById('crumbRoot');
+
+            if (viewId === 'root') {
+                sep1.style.display = 'none';
+                crumbFolder.style.display = 'none';
+                crumbRoot.classList.add('active-crumb');
+            } else {
+                const folderNames = {
+                    pemweb: 'PEMROGRAMAN_WEB',
+                    mobile: 'APLIKASI_MOBILE'
+                };
+                sep1.style.display = 'inline';
+                crumbFolder.style.display = 'inline';
+                crumbFolder.textContent = folderNames[viewId] || viewId.toUpperCase();
+                crumbRoot.classList.remove('active-crumb');
+            }
+        }
+
+        function updateStatusBar(viewId) {
+            const left = document.getElementById('statusBarLeft');
+            if (viewId === 'root') {
+                left.textContent = '📁 2 Objects';
+            } else if (viewId === 'pemweb') {
+                const count = window.laprakData ? Object.keys(window.laprakData).length : 0;
+                left.textContent = `📄 ${count} Laporan Praktikum`;
+            } else if (viewId === 'mobile') {
+                const countM = window.laprakMobileData ? Object.keys(window.laprakMobileData).length : 0;
+                left.textContent = `📱 ${countM} Laporan Praktikum Mobile`;
+            }
+        }
+
+        // Keyboard support for folder items
+        document.querySelectorAll('.folder-item').forEach(el => {
+            el.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    el.click();
+                }
+            });
+        });
+
+        /* ==========================================
+           LAPRAK DATA LOADER & RENDERER
+        ========================================== */
         function loadLaprakData(pekanNumber) {
             const modalBody = document.getElementById('dynamicModalBody');
             const modalTitle = document.getElementById('dynamicModalTitle');
@@ -403,7 +834,7 @@
                 <div class="card y2k-panel p-2 mb-4" style="border-top: 4px solid var(--neon-pink) !important;">
                     <div class="card-body p-3">
                         <h4 class="card-title fw-bold mb-4 pb-2 border-bottom text-primary">
-                            <i class="bi bi-laptop me-2"></i>Latihan & Tugas Praktikum
+                            <i class="bi bi-laptop me-2"></i>Latihan &amp; Tugas Praktikum
                         </h4>
                         <div class="timeline-steps">
                             ${latihanStepsHTML}
@@ -535,6 +966,9 @@
             const container = document.getElementById('laprak-cards-container');
             if (!container) return;
 
+            // If already rendered (no spinner), skip
+            if (!container.querySelector('.spinner-border')) return;
+
             // Clear loading spinner
             container.innerHTML = '';
 
@@ -580,11 +1014,120 @@
                 `;
                 container.appendChild(cardCol);
             });
+
+            // Update status bar count
+            updateStatusBar('pemweb');
         }
 
-        // Initialize rendering when DOM is ready
+        /* ==========================================
+           MOBILE LAPRAK RENDERER
+        ========================================== */
+        function renderAllMobileCards() {
+            const container = document.getElementById('mobile-cards-container');
+            if (!container) return;
+
+            // If already rendered (no spinner), skip
+            if (!container.querySelector('.spinner-border')) return;
+
+            // Clear loading spinner
+            container.innerHTML = '';
+
+            if (!window.laprakMobileData || Object.keys(window.laprakMobileData).length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-5 w-100 text-danger">
+                        <i class="bi bi-exclamation-circle display-4 mb-3 d-block"></i>
+                        <h4 class="fw-bold">Gagal Memuat Laporan</h4>
+                        <p class="text-secondary mb-0 small">Tidak ada berkas laporan praktikum mobile ditemukan.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Sort weeks ascending
+            const sortedPekans = Object.keys(window.laprakMobileData).map(Number).sort((a, b) => a - b);
+
+            sortedPekans.forEach(pekan => {
+                const item = window.laprakMobileData[pekan];
+                const cardCol = document.createElement('div');
+                cardCol.className = 'col d-flex';
+                cardCol.innerHTML = `
+                    <div class="card h-100 w-100 laprak-card y2k-panel p-1 border-0" style="border-top: 4px solid #B983FF !important;" onclick="loadMobileData(${item.pekan})">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="laprak-icon-wrapper" style="background: #B983FF; color: white; border-color: #000;">
+                                        <i class="bi ${item.icon || 'bi-phone'}"></i>
+                                    </div>
+                                    <span class="badge-laprak" style="background: #6BCB77; color: #000;">${item.badge || 'Flutter'}</span>
+                                </div>
+                                <h5 class="fw-bold mb-2">Pekan ${item.pekan}: ${item.title}</h5>
+                                <p class="text-muted small mb-3" style="line-height: 1.6;">${item.description}</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+                                <span class="text-muted font-monospace" style="font-size: 0.8rem;">${item.tanggal}</span>
+                                <button class="btn btn-sm rounded-pill px-3 py-1" style="background: #B983FF; color: white; border: 2px solid #000; box-shadow: 3px 3px 0 #000; font-family: var(--font-heading); font-weight: 800; font-size: 0.75rem;">
+                                    Lihat Laporan <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(cardCol);
+            });
+
+            // Update status bar count
+            updateStatusBar('mobile');
+        }
+
+        function loadMobileData(pekanNumber) {
+            const modalBody = document.getElementById('dynamicModalBody');
+            const modalTitle = document.getElementById('dynamicModalTitle');
+            const modalSubtitle = document.getElementById('dynamicModalSubtitle');
+
+            modalBody.innerHTML = `
+            <div class="text-center py-5 my-5">
+                <div class="spinner-border" style="width: 3rem; height: 3rem; color: #B983FF;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="text-muted mt-3 fw-semibold">Mengekstrak data praktikum mobile pekan ${pekanNumber}...</p>
+            </div>
+        `;
+
+            modalTitle.innerText = `Laporan Praktikum Mobile Pekan ${pekanNumber}`;
+            modalSubtitle.innerText = "Memuat...";
+
+            const myModal = new bootstrap.Modal(document.getElementById('dynamicLaprakModal'));
+            myModal.show();
+
+            if (window.laprakMobileData && window.laprakMobileData[pekanNumber]) {
+                renderLaprakHTML(window.laprakMobileData[pekanNumber]);
+                return;
+            }
+
+            // Fallback: dinamis load
+            const scriptId = `script-mobile-pekan-${pekanNumber}`;
+            let scriptElement = document.getElementById(scriptId);
+            if (scriptElement) scriptElement.remove();
+
+            scriptElement = document.createElement('script');
+            scriptElement.id = scriptId;
+            scriptElement.src = `content/laprak/mobile/pekan${pekanNumber}.js`;
+
+            scriptElement.onload = function () {
+                if (window.laprakMobileData && window.laprakMobileData[pekanNumber]) {
+                    renderLaprakHTML(window.laprakMobileData[pekanNumber]);
+                } else {
+                    showLoadError(pekanNumber);
+                }
+            };
+            scriptElement.onerror = function () { showLoadError(pekanNumber); };
+            document.head.appendChild(scriptElement);
+        }
+
+        // Initialize — do NOT auto-render cards; wait for folder click
         window.addEventListener('DOMContentLoaded', () => {
-            renderAllLaprakCards();
+            // Only set up initial state
+            navigateTo('root');
         });
     </script>
 
