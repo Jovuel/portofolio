@@ -1,7 +1,8 @@
 window.laprakMobileData = window.laprakMobileData || {};
 window.laprakMobileData[1] = {
   "pekan": 1,
-  "tanggal": "September 2026",
+  "pekannum": 1,
+  "tanggal": "9 September 2026",
   "title": "Basic Form — TextField & TextFormField",
   "subject": "Praktikum Aplikasi Mobile",
   "badge": "Flutter",

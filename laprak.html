@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laporan Praktikum - Portofolio Jovantri</title>
-    <meta name="description" content="Arsip Laporan Praktikum Pemrograman Web dan Aplikasi Mobile oleh Jovantri Immanuel Gulo.">
+    <meta name="description"
+        content="Arsip Laporan Praktikum Pemrograman Web dan Aplikasi Mobile oleh Jovantri Immanuel Gulo.">
     <link rel="icon" href="images/icon.png" type="image/png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -36,18 +37,37 @@
             overflow-x: auto;
             white-space: nowrap;
         }
-        .explorer-path-bar .path-sep { color: var(--color-yellow); margin: 0 0.25rem; }
+
+        .explorer-path-bar .path-sep {
+            color: var(--color-yellow);
+            margin: 0 0.25rem;
+        }
+
         .path-crumb {
             cursor: pointer;
             color: var(--color-green);
             transition: color 0.15s;
         }
-        .path-crumb:hover { color: var(--color-yellow); text-decoration: underline; }
-        .path-crumb.active-crumb { color: var(--color-white); cursor: default; text-decoration: none; }
+
+        .path-crumb:hover {
+            color: var(--color-yellow);
+            text-decoration: underline;
+        }
+
+        .path-crumb.active-crumb {
+            color: var(--color-white);
+            cursor: default;
+            text-decoration: none;
+        }
 
         /* ---- View Panels ---- */
-        .explorer-view { display: none; }
-        .explorer-view.active { display: block; }
+        .explorer-view {
+            display: none;
+        }
+
+        .explorer-view.active {
+            display: block;
+        }
 
         /* ---- Folder Grid ---- */
         .folder-grid {
@@ -63,8 +83,14 @@
             transition: transform 0.15s ease, box-shadow 0.15s ease;
             position: relative;
         }
-        .folder-item:hover { transform: translate(-4px, -4px); }
-        .folder-item:active { transform: translate(2px, 2px); }
+
+        .folder-item:hover {
+            transform: translate(-4px, -4px);
+        }
+
+        .folder-item:active {
+            transform: translate(2px, 2px);
+        }
 
         .folder-body {
             border: var(--border-brutal);
@@ -78,6 +104,7 @@
             gap: 1rem;
             min-height: 200px;
         }
+
         .folder-item:hover .folder-body {
             box-shadow: var(--shadow-hover);
         }
@@ -98,10 +125,13 @@
         .folder-icon {
             font-size: 4rem;
             line-height: 1;
-            filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.9));
+            filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.9));
             transition: transform 0.2s ease;
         }
-        .folder-item:hover .folder-icon { transform: scale(1.15) rotate(-3deg); }
+
+        .folder-item:hover .folder-icon {
+            transform: scale(1.15) rotate(-3deg);
+        }
 
         /* Folder Name */
         .folder-name {
@@ -140,33 +170,71 @@
 
         /* ---- Color Schemes per folder ---- */
         /* Pemrograman Web → Blue + Yellow */
-        .folder-web .folder-body { background-color: #4D96FF; }
-        .folder-web .folder-tab  { background-color: #FFD93D; }
-        .folder-web .folder-badge { background-color: #FFD93D; color: var(--color-black); }
-        .folder-web .folder-name  { color: var(--color-white); text-shadow: 2px 2px 0 var(--color-black); }
-        .folder-web .folder-meta  { color: rgba(255,255,255,0.85); opacity: 1; }
-        .folder-web .folder-icon  { color: var(--color-white); }
+        .folder-web .folder-body {
+            background-color: #4D96FF;
+        }
+
+        .folder-web .folder-tab {
+            background-color: #FFD93D;
+        }
+
+        .folder-web .folder-badge {
+            background-color: #FFD93D;
+            color: var(--color-black);
+        }
+
+        .folder-web .folder-name {
+            color: var(--color-white);
+            text-shadow: 2px 2px 0 var(--color-black);
+        }
+
+        .folder-web .folder-meta {
+            color: rgba(255, 255, 255, 0.85);
+            opacity: 1;
+        }
+
+        .folder-web .folder-icon {
+            color: var(--color-white);
+        }
 
         /* Aplikasi Mobile → Purple + Green */
-        .folder-mobile .folder-body { background-color: #B983FF; }
-        .folder-mobile .folder-tab  { background-color: #6BCB77; }
-        .folder-mobile .folder-badge { background-color: #6BCB77; color: var(--color-black); }
-        .folder-mobile .folder-name  { color: var(--color-white); text-shadow: 2px 2px 0 var(--color-black); }
-        .folder-mobile .folder-meta  { color: rgba(255,255,255,0.85); opacity: 1; }
-        .folder-mobile .folder-icon  { color: var(--color-white); }
+        .folder-mobile .folder-body {
+            background-color: #B983FF;
+        }
+
+        .folder-mobile .folder-tab {
+            background-color: #6BCB77;
+        }
+
+        .folder-mobile .folder-badge {
+            background-color: #6BCB77;
+            color: var(--color-black);
+        }
+
+        .folder-mobile .folder-name {
+            color: var(--color-white);
+            text-shadow: 2px 2px 0 var(--color-black);
+        }
+
+        .folder-mobile .folder-meta {
+            color: rgba(255, 255, 255, 0.85);
+            opacity: 1;
+        }
+
+        .folder-mobile .folder-icon {
+            color: var(--color-white);
+        }
 
         /* ---- Pixel scanline texture (subtle) ---- */
         .folder-body::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 3px,
-                rgba(0,0,0,0.04) 3px,
-                rgba(0,0,0,0.04) 4px
-            );
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 3px,
+                    rgba(0, 0, 0, 0.04) 3px,
+                    rgba(0, 0, 0, 0.04) 4px);
             pointer-events: none;
         }
 
@@ -202,11 +270,13 @@
             align-items: center;
             gap: 0.4rem;
         }
+
         .btn-back-folder:hover {
             background: var(--color-yellow);
             transform: translate(-2px, -2px);
             box-shadow: 6px 6px 0 var(--color-black) !important;
         }
+
         .btn-back-folder:active {
             transform: translate(2px, 2px);
             box-shadow: 2px 2px 0 var(--color-black) !important;
@@ -220,6 +290,7 @@
             padding: 4rem 2rem;
             text-align: center;
         }
+
         .coming-soon-panel .cs-icon {
             font-size: 5rem;
             display: block;
@@ -227,10 +298,12 @@
             color: var(--color-purple);
             filter: drop-shadow(4px 4px 0 var(--color-black));
         }
+
         .coming-soon-panel h3 {
             font-size: 2rem;
             color: var(--color-black);
         }
+
         .coming-soon-panel p {
             color: var(--color-black);
             font-size: 0.9rem;
@@ -241,21 +314,46 @@
 
         /* Pixel blink cursor */
         @keyframes blink-cursor {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
         }
-        .blink { animation: blink-cursor 0.9s step-end infinite; }
+
+        .blink {
+            animation: blink-cursor 0.9s step-end infinite;
+        }
 
         /* ---- Laprak Cards Container ---- */
-        #laprak-cards-container .laprak-card { cursor: pointer; }
+        #laprak-cards-container .laprak-card {
+            cursor: pointer;
+        }
 
         /* ---- Folder open pixel animation ---- */
         @keyframes folder-open {
-            0% { transform: scale(0.92) rotate(-2deg); opacity: 0; }
-            60% { transform: scale(1.03) rotate(0.5deg); }
-            100% { transform: scale(1) rotate(0); opacity: 1; }
+            0% {
+                transform: scale(0.92) rotate(-2deg);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.03) rotate(0.5deg);
+            }
+
+            100% {
+                transform: scale(1) rotate(0);
+                opacity: 1;
+            }
         }
-        .explorer-view.active { animation: folder-open 0.3s ease forwards; }
+
+        .explorer-view.active {
+            animation: folder-open 0.3s ease forwards;
+        }
 
         /* ---- Status bar ---- */
         .explorer-statusbar {
@@ -321,7 +419,8 @@
             <!-- Page Header -->
             <div class="text-center mb-5">
                 <h2 class="section-title-pixel">📂 Laporan Praktikum</h2>
-                <p class="text-muted" style="font-size: 0.9rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">
+                <p class="text-muted"
+                    style="font-size: 0.9rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">
                     Pilih folder mata kuliah untuk membuka arsip laporan
                 </p>
             </div>
@@ -340,7 +439,8 @@
                 <div class="folder-grid">
 
                     <!-- Folder: Pemrograman Web -->
-                    <div class="folder-item folder-web" id="folderPemWeb" onclick="openFolder('pemweb')" tabindex="0" role="button" aria-label="Buka folder Pemrograman Web">
+                    <div class="folder-item folder-web" id="folderPemWeb" onclick="openFolder('pemweb')" tabindex="0"
+                        role="button" aria-label="Buka folder Pemrograman Web">
                         <div class="folder-tab"></div>
                         <div class="folder-body">
                             <span class="folder-badge">4 Files</span>
@@ -351,10 +451,11 @@
                     </div>
 
                     <!-- Folder: Aplikasi Mobile -->
-                    <div class="folder-item folder-mobile" id="folderAppMobile" onclick="openFolder('mobile')" tabindex="0" role="button" aria-label="Buka folder Aplikasi Mobile">
+                    <div class="folder-item folder-mobile" id="folderAppMobile" onclick="openFolder('mobile')"
+                        tabindex="0" role="button" aria-label="Buka folder Aplikasi Mobile">
                         <div class="folder-tab"></div>
                         <div class="folder-body">
-                            <span class="folder-badge" style="background:#FFD93D;">1 File</span>
+                            <span class="folder-badge" style="background:#FFD93D;">3 File</span>
                             <span class="folder-icon">📱</span>
                             <span class="folder-name">Aplikasi Mobile</span>
                             <span class="folder-meta">Flutter • Pekan 1</span>
@@ -370,7 +471,8 @@
                     <button class="btn-back-folder" onclick="navigateTo('root')">
                         <i class="bi bi-arrow-left"></i> Kembali
                     </button>
-                    <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; background: #4D96FF; color: white; padding: 0.3rem 1rem; border: var(--border-brutal); box-shadow: 3px 3px 0 var(--color-black);">
+                    <div
+                        style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; background: #4D96FF; color: white; padding: 0.3rem 1rem; border: var(--border-brutal); box-shadow: 3px 3px 0 var(--color-black);">
                         🖥️ Pemrograman Web
                     </div>
                 </div>
@@ -394,7 +496,8 @@
                     <button class="btn-back-folder" onclick="navigateTo('root')">
                         <i class="bi bi-arrow-left"></i> Kembali
                     </button>
-                    <div style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; background: #B983FF; color: white; padding: 0.3rem 1rem; border: var(--border-brutal); box-shadow: 3px 3px 0 var(--color-black);">
+                    <div
+                        style="font-family: var(--font-heading); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; background: #B983FF; color: white; padding: 0.3rem 1rem; border: var(--border-brutal); box-shadow: 3px 3px 0 var(--color-black);">
                         📱 Aplikasi Mobile
                     </div>
                 </div>
@@ -555,6 +658,8 @@
 
     <!-- Berkas Data Laporan Praktikum Aplikasi Mobile -->
     <script src="content/laprak/mobile/pekan1.js"></script>
+    <script src="content/laprak/mobile/pekan2-1.js"></script>
+    <script src="content/laprak/mobile/pekan2-2.js"></script>
 
     <script>
         /* ==========================================
@@ -628,7 +733,7 @@
 
         // Keyboard support for folder items
         document.querySelectorAll('.folder-item').forEach(el => {
-            el.addEventListener('keydown', function(e) {
+            el.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     el.click();
@@ -1060,7 +1165,7 @@
                                     </div>
                                     <span class="badge-laprak" style="background: #6BCB77; color: #000;">${item.badge || 'Flutter'}</span>
                                 </div>
-                                <h5 class="fw-bold mb-2">Pekan ${item.pekan}: ${item.title}</h5>
+                                <h5 class="fw-bold mb-2">Pekan ${item.pekannum}: ${item.title}</h5>
                                 <p class="text-muted small mb-3" style="line-height: 1.6;">${item.description}</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
