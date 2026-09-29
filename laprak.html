@@ -455,7 +455,7 @@
                         tabindex="0" role="button" aria-label="Buka folder Aplikasi Mobile">
                         <div class="folder-tab"></div>
                         <div class="folder-body">
-                            <span class="folder-badge" style="background:#FFD93D;">3 File</span>
+                            <span class="folder-badge" style="background:#FFD93D;">4 File</span>
                             <span class="folder-icon">📱</span>
                             <span class="folder-name">Aplikasi Mobile</span>
                             <span class="folder-meta">Flutter • Pekan 1</span>
@@ -660,6 +660,7 @@
     <script src="content/laprak/mobile/pekan1.js"></script>
     <script src="content/laprak/mobile/pekan2-1.js"></script>
     <script src="content/laprak/mobile/pekan2-2.js"></script>
+    <script src="content/laprak/mobile/pekan3.js"></script>
 
     <script>
         /* ==========================================
@@ -744,7 +745,7 @@
         /* ==========================================
            LAPRAK DATA LOADER & RENDERER
         ========================================== */
-        function loadLaprakData(pekanNumber) {
+        function loadLaprakData(pekanNumber, pekanNum) {
             const modalBody = document.getElementById('dynamicModalBody');
             const modalTitle = document.getElementById('dynamicModalTitle');
             const modalSubtitle = document.getElementById('dynamicModalSubtitle');
@@ -760,7 +761,7 @@
         `;
 
             // 2. Set title & subtitle default
-            modalTitle.innerText = `Laporan Praktikum Pekan ${pekanNumber}`;
+            modalTitle.innerText = `Laporan Praktikum Pekan ${pekanNum}`;
             modalSubtitle.innerText = "Memuat...";
 
             // 3. Tampilkan modal shell induk
@@ -1093,10 +1094,14 @@
 
             sortedPekans.forEach(pekan => {
                 const item = window.laprakData[pekan];
-                const cardCol = document.createElement('div');
+                const cardCol =
+
+
+
+                    document.createElement('div');
                 cardCol.className = 'col d-flex';
                 cardCol.innerHTML = `
-                    <div class="card h-100 w-100 laprak-card y2k-panel p-1 border-0" onclick="loadLaprakData(${item.pekan})">
+                    <div class="card h-100 w-100 laprak-card y2k-panel p-1 border-0" onclick="loadLaprakData(${item.pekan}, ${item.pekannum})">
                         <div class="card-body p-4 d-flex flex-column justify-content-between">
                             <div>
                                 <div class="d-flex justify-content-between align-items-center mb-3">
