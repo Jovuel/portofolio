@@ -455,7 +455,7 @@
                         tabindex="0" role="button" aria-label="Buka folder Aplikasi Mobile">
                         <div class="folder-tab"></div>
                         <div class="folder-body">
-                            <span class="folder-badge" style="background:#FFD93D;">4 File</span>
+                            <span class="folder-badge" style="background:#FFD93D;">5 File</span>
                             <span class="folder-icon">📱</span>
                             <span class="folder-name">Aplikasi Mobile</span>
                             <span class="folder-meta">Flutter • Pekan 1</span>
@@ -662,6 +662,7 @@
     <script src="content/laprak/mobile/pekan2-2.js"></script>
     <script src="content/laprak/mobile/pekan3.js"></script>
     <script src="content/laprak/mobile/pekan4.js"></script>
+    <script src="content/laprak/mobile/pekan5.js"></script>
 
     <script>
         /* ==========================================
@@ -821,7 +822,7 @@
             const modalTitle = document.getElementById('dynamicModalTitle');
             const modalSubtitle = document.getElementById('dynamicModalSubtitle');
 
-            modalTitle.innerText = `Laporan Praktikum Pekan ${data.pekan}`;
+            modalTitle.innerText = `Laporan Praktikum Pekan ${data.pekannum !== undefined ? data.pekannum : data.pekan}`;
             modalSubtitle.innerText = data.title;
 
             // Jika statusnya coming_soon, tampilkan placeholder premium
@@ -1017,7 +1018,7 @@
                                             <i class="bi bi-calendar-event info-icon"></i>
                                             <span>Jadwal Pekan:</span>
                                         </div>
-                                        <span class="badge-sidebar">Pekan ${data.pekan}</span>
+                                        <span class="badge-sidebar">Pekan ${data.pekannum !== undefined ? data.pekannum : data.pekan}</span>
                                     </div>
                                     <div class="info-sidebar-item">
                                         <div class="info-label-box">
@@ -1216,13 +1217,14 @@
             }
 
             // Fallback: dinamis load
+            const fileMap = { 1: 'pekan1.js', 2: 'pekan2-1.js', 3: 'pekan2-2.js', 4: 'pekan3.js', 5: 'pekan4.js', 6: 'pekan5.js' };
             const scriptId = `script-mobile-pekan-${pekanNumber}`;
             let scriptElement = document.getElementById(scriptId);
             if (scriptElement) scriptElement.remove();
 
             scriptElement = document.createElement('script');
             scriptElement.id = scriptId;
-            scriptElement.src = `content/laprak/mobile/pekan${pekanNumber}.js`;
+            scriptElement.src = `content/laprak/mobile/${fileMap[pekanNumber] || ('pekan' + pekanNumber + '.js')}`;
 
             scriptElement.onload = function () {
                 if (window.laprakMobileData && window.laprakMobileData[pekanNumber]) {
