@@ -455,10 +455,10 @@
                         tabindex="0" role="button" aria-label="Buka folder Aplikasi Mobile">
                         <div class="folder-tab"></div>
                         <div class="folder-body">
-                            <span class="folder-badge" style="background:#FFD93D;">5 File</span>
+                            <span class="folder-badge" style="background:#FFD93D;">6 File</span>
                             <span class="folder-icon">📱</span>
                             <span class="folder-name">Aplikasi Mobile</span>
-                            <span class="folder-meta">Flutter • Pekan 1</span>
+                            <span class="folder-meta">Flutter • Pekan 1–6</span>
                         </div>
                     </div>
 
@@ -663,6 +663,7 @@
     <script src="content/laprak/mobile/pekan3.js"></script>
     <script src="content/laprak/mobile/pekan4.js"></script>
     <script src="content/laprak/mobile/pekan5.js"></script>
+    <script src="content/laprak/mobile/pekan6.js"></script>
 
     <script>
         /* ==========================================
@@ -852,32 +853,51 @@
                 });
             }
 
+            // Helper fungsi render jendela screenshot macOS (Mendukung Single & Multi/Gallery)
+            function renderScreenshotBox(gambarInput, defaultPrefix) {
+                if (!gambarInput) return '';
+                const gambarArray = Array.isArray(gambarInput) ? gambarInput : [gambarInput];
+                if (gambarArray.length === 0) return '';
+
+                function createSingleWindow(item, index) {
+                    const src = typeof item === 'object' && item !== null ? item.src : item;
+                    const caption = (typeof item === 'object' && item !== null && item.caption) 
+                        ? item.caption 
+                        : `${defaultPrefix} ${index + 1}`;
+                    return `
+                    <div class="screenshot-window mt-2 h-100 shadow-xs">
+                        <div class="screenshot-header d-flex align-items-center justify-content-between px-3 py-2">
+                            <div class="d-flex align-items-center" style="gap: 6px;">
+                                <span class="window-dot red"></span>
+                                <span class="window-dot yellow"></span>
+                                <span class="window-dot green"></span>
+                            </div>
+                            <span class="text-muted font-monospace text-truncate ms-2" style="font-size: 0.68rem; font-weight: 600;" title="${caption}">${caption}</span>
+                        </div>
+                        <div class="screenshot-body text-center p-2">
+                            <img src="${src}" alt="${caption}" class="img-fluid rounded" style="max-height: 520px; object-fit: contain;">
+                        </div>
+                    </div>
+                    `;
+                }
+
+                if (gambarArray.length === 1) {
+                    return createSingleWindow(gambarArray[0], 0);
+                } else {
+                    const colClass = gambarArray.length === 2 ? 'col-12 col-md-6' : (gambarArray.length === 3 ? 'col-12 col-md-4' : 'col-12 col-md-6');
+                    return `
+                    <div class="row g-3 mt-1">
+                        ${gambarArray.map((item, idx) => `<div class="${colClass}">${createSingleWindow(item, idx)}</div>`).join('')}
+                    </div>
+                    `;
+                }
+            }
+
             // RAKIT TIMELINE LANGKAH KANAN (TUTORIAL UTAMA)
             let langkahHTML = '';
             if (data.langkahLangkah && data.langkahLangkah.length > 0) {
                 data.langkahLangkah.forEach(step => {
-                    // Bungkus gambar (bisa satu atau banyak) ke dalam bingkai macOS
-                    let imagesHTML = '';
-                    if (step.gambar) {
-                        const gambarArray = Array.isArray(step.gambar) ? step.gambar : [step.gambar];
-                        gambarArray.forEach((imgSrc, idx) => {
-                            imagesHTML += `
-                            <div class="screenshot-window mt-3">
-                                <div class="screenshot-header d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center" style="gap: 6px;">
-                                        <span class="window-dot red"></span>
-                                        <span class="window-dot yellow"></span>
-                                        <span class="window-dot green"></span>
-                                    </div>
-                                    <span class="text-muted font-monospace" style="font-size: 0.65rem; font-weight: 500;">Screenshot ${idx + 1}</span>
-                                </div>
-                                <div class="screenshot-body text-center">
-                                    <img src="${imgSrc}" alt="Langkah ${step.nomor} - Gambar ${idx + 1}" class="img-fluid">
-                                </div>
-                            </div>
-                        `;
-                        });
-                    }
+                    let imagesHTML = renderScreenshotBox(step.gambar, 'Screenshot');
 
                     langkahHTML += `
                     <div class="timeline-step-item">
@@ -895,32 +915,134 @@
                 });
             }
 
+            // RAKIT PENGAMATAN EKSPERIMEN (Jika Ada)
+            let pengamatanHTML = '';
+            if (data.pengamatan && data.pengamatan.length > 0) {
+                let pItemsHTML = '';
+                data.pengamatan.forEach(p => {
+                    let pImagesHTML = renderScreenshotBox(p.gambar, 'Bukti Pengamatan');
+                    pItemsHTML += `
+                    <div class="mb-4 pb-3 border-bottom border-light-subtle">
+                        <div class="d-flex align-items-start gap-2 mb-2">
+                            <span class="badge bg-warning text-dark px-2 py-1 fw-bold font-monospace" style="font-size: 0.8rem;">Pertanyaan ${p.nomor}</span>
+                            <h6 class="fw-bold mb-0 text-dark flex-grow-1" style="line-height: 1.5;">${p.pertanyaan}</h6>
+                        </div>
+                        <div class="p-3 rounded-3 mb-2" style="background: rgba(255, 193, 7, 0.08); border-left: 4px solid #FFC107;">
+                            <strong class="text-dark d-block mb-1"><i class="bi bi-chat-left-dots-fill me-1 text-warning"></i> Jawaban &amp; Pembahasan Eksperimen:</strong>
+                            <div class="text-secondary small" style="line-height: 1.7;">${p.jawaban}</div>
+                        </div>
+                        ${pImagesHTML}
+                    </div>
+                    `;
+                });
+                pengamatanHTML = `
+                <div class="card y2k-panel p-2 mb-4" style="border-top: 4px solid #FFC107 !important;">
+                    <div class="card-body p-3">
+                        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom flex-wrap gap-2">
+                            <h4 class="card-title fw-bold mb-0 text-primary">
+                                <i class="bi bi-eye-fill me-2 text-warning"></i>Pengamatan Eksperimen (Bagian B)
+                            </h4>
+                            <span class="badge bg-warning text-dark fw-bold px-3 py-1 font-monospace">Bobot 10%</span>
+                        </div>
+                        ${pItemsHTML}
+                    </div>
+                </div>
+                `;
+            }
+
+            // RAKIT TABEL PENGUJIAN SKENARIO & CHECKPOINT 2 (Jika Ada)
+            let tabelUjiHTML = '';
+            if (data.tabelUji && data.tabelUji.length > 0) {
+                let rowsHTML = '';
+                data.tabelUji.forEach(row => {
+                    const isSesuai = row.sesuai !== false;
+                    rowsHTML += `
+                    <tr>
+                        <td class="text-center font-monospace fw-bold">${row.nomor}</td>
+                        <td><strong>${row.skenario}</strong></td>
+                        <td><span class="text-secondary small">${row.ekspektasi}</span></td>
+                        <td class="text-center">
+                            <span class="badge ${isSesuai ? 'bg-success' : 'bg-danger'} px-2 py-1 font-monospace">
+                                <i class="bi ${isSesuai ? 'bi-check-circle-fill' : 'bi-x-circle-fill'} me-1"></i>${isSesuai ? 'Sesuai' : 'Tidak Sesuai'}
+                            </span>
+                        </td>
+                        <td class="small text-muted">${row.keterangan || '-'}</td>
+                    </tr>
+                    `;
+                });
+                let ujiImagesHTML = renderScreenshotBox(data.tabelUjiGambar, 'Pengujian Skenario');
+                tabelUjiHTML = `
+                <div class="card y2k-panel p-2 mb-4" style="border-top: 4px solid #0D6EFD !important;">
+                    <div class="card-body p-3">
+                        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom flex-wrap gap-2">
+                            <h4 class="card-title fw-bold mb-0 text-primary">
+                                <i class="bi bi-table me-2 text-primary"></i>Tabel Pengujian Skenario (Langkah C.7) &amp; Checkpoint 2
+                            </h4>
+                            <span class="badge bg-primary text-white fw-bold px-3 py-1 font-monospace">Bobot 25%</span>
+                        </div>
+                        <div class="table-responsive mb-3">
+                            <table class="table table-hover table-bordered align-middle mb-0" style="font-size: 0.85rem;">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th style="width: 5%;" class="text-center">No</th>
+                                        <th style="width: 30%;">Skenario Pengujian</th>
+                                        <th style="width: 35%;">Hasil yang Diharapkan</th>
+                                        <th style="width: 14%;" class="text-center">Status</th>
+                                        <th style="width: 16%;">Hasil Observasi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rowsHTML}
+                                </tbody>
+                            </table>
+                        </div>
+                        ${ujiImagesHTML}
+                    </div>
+                </div>
+                `;
+            }
+
+            // RAKIT PERTANYAAN ANALISIS (Jika Ada)
+            let analisisHTML = '';
+            if (data.pertanyaanAnalisis && data.pertanyaanAnalisis.length > 0) {
+                let aItemsHTML = '';
+                data.pertanyaanAnalisis.forEach(item => {
+                    let aImagesHTML = renderScreenshotBox(item.gambar, 'Analisis Visual');
+                    aItemsHTML += `
+                    <div class="mb-4 pb-3 border-bottom border-light-subtle">
+                        <div class="d-flex align-items-start gap-2 mb-2">
+                            <span class="badge text-white px-2 py-1 fw-bold font-monospace" style="font-size: 0.8rem; background: #6610F2;">Pertanyaan ${item.nomor}</span>
+                            <h6 class="fw-bold mb-0 text-dark flex-grow-1" style="line-height: 1.5;">${item.pertanyaan}</h6>
+                        </div>
+                        <div class="p-3 rounded-3 mb-2" style="background: rgba(102, 16, 242, 0.05); border-left: 4px solid #6610F2;">
+                            <strong class="d-block mb-1" style="color: #6610F2;"><i class="bi bi-lightbulb-fill me-1"></i> Pembahasan Analisis Mendalam:</strong>
+                            <div class="text-secondary small" style="line-height: 1.7;">${item.jawaban}</div>
+                        </div>
+                        ${aImagesHTML}
+                    </div>
+                    `;
+                });
+                analisisHTML = `
+                <div class="card y2k-panel p-2 mb-4" style="border-top: 4px solid #6610F2 !important;">
+                    <div class="card-body p-3">
+                        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom flex-wrap gap-2">
+                            <h4 class="card-title fw-bold mb-0 text-primary">
+                                <i class="bi bi-question-diamond-fill me-2" style="color: #6610F2;"></i>Pertanyaan Analisis Modul Praktikum
+                            </h4>
+                            <span class="badge text-white fw-bold px-3 py-1 font-monospace" style="background: #6610F2;">Bobot 20%</span>
+                        </div>
+                        ${aItemsHTML}
+                    </div>
+                </div>
+                `;
+            }
+
             // RAKIT LAHTIHAN/TUGAS LANGKAH (Jika Ada)
             let latihanHTML = '';
             if (data.latihan && data.latihan.length > 0) {
                 let latihanStepsHTML = '';
                 data.latihan.forEach(step => {
-                    let imagesHTML = '';
-                    if (step.gambar) {
-                        const gambarArray = Array.isArray(step.gambar) ? step.gambar : [step.gambar];
-                        gambarArray.forEach((imgSrc, idx) => {
-                            imagesHTML += `
-                            <div class="screenshot-window mt-3">
-                                <div class="screenshot-header d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center" style="gap: 6px;">
-                                        <span class="window-dot red"></span>
-                                        <span class="window-dot yellow"></span>
-                                        <span class="window-dot green"></span>
-                                    </div>
-                                    <span class="text-muted font-monospace" style="font-size: 0.65rem; font-weight: 500;">Latihan Screenshot ${idx + 1}</span>
-                                </div>
-                                <div class="screenshot-body text-center">
-                                    <img src="${imgSrc}" alt="Latihan ${step.nomor} - Gambar ${idx + 1}" class="img-fluid">
-                                </div>
-                            </div>
-                        `;
-                        });
-                    }
+                    let imagesHTML = renderScreenshotBox(step.gambar, 'Latihan Screenshot');
 
                     latihanStepsHTML += `
                     <div class="timeline-step-item">
@@ -941,15 +1063,63 @@
                 <!-- Card Latihan/Tugas Praktikum (Dinamis) -->
                 <div class="card y2k-panel p-2 mb-4" style="border-top: 4px solid var(--neon-pink) !important;">
                     <div class="card-body p-3">
-                        <h4 class="card-title fw-bold mb-4 pb-2 border-bottom text-primary">
-                            <i class="bi bi-laptop me-2"></i>Latihan &amp; Tugas Praktikum
-                        </h4>
+                        <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom flex-wrap gap-2">
+                            <h4 class="card-title fw-bold mb-0 text-primary">
+                                <i class="bi bi-laptop me-2"></i>Latihan &amp; Tugas Praktikum
+                            </h4>
+                            <span class="badge text-white fw-bold px-3 py-1 font-monospace" style="background: var(--neon-pink);">Bobot 30%</span>
+                        </div>
                         <div class="timeline-steps">
                             ${latihanStepsHTML}
                         </div>
                     </div>
                 </div>
             `;
+            }
+
+            // RAKIT RUBRIK PENILAIAN (Jika Ada)
+            let rubrikHTML = '';
+            if (data.rubrikPenilaian && data.rubrikPenilaian.length > 0) {
+                let rRowsHTML = '';
+                data.rubrikPenilaian.forEach(r => {
+                    rRowsHTML += `
+                    <tr>
+                        <td class="fw-bold text-dark">${r.komponen}</td>
+                        <td class="text-center font-monospace fw-bold text-primary">${r.bobot}</td>
+                        <td><span class="small text-muted">${r.kriteria}</span></td>
+                        <td class="text-center">
+                            <span class="badge bg-success px-2 py-1 font-monospace"><i class="bi bi-check-all me-1"></i>${r.status || 'Terpenuhi'}</span>
+                        </td>
+                    </tr>
+                    `;
+                });
+                rubrikHTML = `
+                <div class="card y2k-panel p-2 mb-4" style="border-top: 4px solid #198754 !important;">
+                    <div class="card-body p-3">
+                        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom flex-wrap gap-2">
+                            <h4 class="card-title fw-bold mb-0 text-success">
+                                <i class="bi bi-award-fill me-2"></i>Rubrik Penilaian &amp; Pemenuhan Kriteria
+                            </h4>
+                            <span class="badge bg-success text-white fw-bold px-3 py-1 font-monospace">100% Sempurna</span>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered align-middle mb-0" style="font-size: 0.85rem;">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th style="width: 32%;">Komponen Penilaian</th>
+                                        <th style="width: 12%;" class="text-center">Bobot</th>
+                                        <th style="width: 42%;">Kriteria Kelulusan</th>
+                                        <th style="width: 14%;" class="text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rRowsHTML}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                `;
             }
 
             // INJECT LAYOUT STRUKTUR UTAMA KEDALAM MODAL BODY
@@ -1047,8 +1217,20 @@
                             </div>
                         </div>
 
+                        <!-- CARD PENGAMATAN EKSPERIMEN (Dinamis) -->
+                        ${pengamatanHTML}
+
+                        <!-- CARD TABEL PENGUJIAN SKENARIO & CHECKPOINT 2 (Dinamis) -->
+                        ${tabelUjiHTML}
+
+                        <!-- CARD PERTANYAAN ANALISIS (Dinamis) -->
+                        ${analisisHTML}
+
                         <!-- CARD LATIHAN & TUGAS (Dinamis) -->
                         ${latihanHTML}
+
+                        <!-- CARD RUBRIK PENILAIAN (Dinamis) -->
+                        ${rubrikHTML}
 
                             <!-- Card Kesimpulan -->
                             <div class="card y2k-panel p-2 mb-4">
@@ -1217,7 +1399,7 @@
             }
 
             // Fallback: dinamis load
-            const fileMap = { 1: 'pekan1.js', 2: 'pekan2-1.js', 3: 'pekan2-2.js', 4: 'pekan3.js', 5: 'pekan4.js', 6: 'pekan5.js' };
+            const fileMap = { 1: 'pekan1.js', 2: 'pekan2-1.js', 3: 'pekan2-2.js', 4: 'pekan3.js', 5: 'pekan4.js', 6: 'pekan5.js', 7: 'pekan6.js' };
             const scriptId = `script-mobile-pekan-${pekanNumber}`;
             let scriptElement = document.getElementById(scriptId);
             if (scriptElement) scriptElement.remove();
