@@ -455,10 +455,10 @@
                         tabindex="0" role="button" aria-label="Buka folder Aplikasi Mobile">
                         <div class="folder-tab"></div>
                         <div class="folder-body">
-                            <span class="folder-badge" style="background:#FFD93D;">7 File</span>
+                            <span class="folder-badge" style="background:#FFD93D;">8 File</span>
                             <span class="folder-icon">📱</span>
                             <span class="folder-name">Aplikasi Mobile</span>
-                            <span class="folder-meta">Flutter • Pekan 1–7</span>
+                            <span class="folder-meta">Flutter • Pekan 1–8</span>
                         </div>
                     </div>
 
@@ -665,6 +665,7 @@
     <script src="content/laprak/mobile/pekan5.js"></script>
     <script src="content/laprak/mobile/pekan6.js"></script>
     <script src="content/laprak/mobile/pekan7.js"></script>
+    <script src="content/laprak/mobile/pekan8.js"></script>
 
     <script>
         /* ==========================================
@@ -955,6 +956,50 @@
                                 </thead>
                                 <tbody>
                                     ${rows}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+
+            // RAKIT TABEL LANGKAH A.1 (Jika Ada)
+            let tabelA1HTML = '';
+            if (data.tabelA1 && data.tabelA1.items && data.tabelA1.items.length > 0) {
+                let rowsA1 = '';
+                data.tabelA1.items.forEach((item, idx) => {
+                    rowsA1 += `
+                    <tr>
+                        <td class="text-center font-monospace fw-bold" style="width: 5%;">${idx + 1}</td>
+                        <td style="width: 45%;"><strong>${item.pertanyaan}</strong></td>
+                        <td style="width: 50%;"><span class="text-secondary small">${item.jawaban}</span></td>
+                    </tr>
+                    `;
+                });
+                tabelA1HTML = `
+                <div class="card y2k-panel p-2 mb-4" style="border-top: 4px solid #FD7E14 !important;">
+                    <div class="card-body p-3">
+                        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom flex-wrap gap-2">
+                            <h4 class="card-title fw-bold mb-0 text-primary">
+                                <i class="bi bi-braces-asterisk me-2" style="color: #FD7E14;"></i>${data.tabelA1.judul || 'Tabel Langkah A.1'}
+                            </h4>
+                            <span class="badge text-white fw-bold px-3 py-1 font-monospace" style="background: #FD7E14;">Bobot ${data.tabelA1.bobot || '5%'}</span>
+                        </div>
+                        <div class="p-3 rounded-3 mb-3" style="background: rgba(253, 126, 20, 0.08); border-left: 4px solid #FD7E14;">
+                            <div class="text-secondary small" style="line-height: 1.7;">${data.tabelA1.penjelasan || ''}</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered align-middle mb-0" style="font-size: 0.85rem;">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th class="text-center">No</th>
+                                        <th>Pertanyaan Pengamatan JSON</th>
+                                        <th>Hasil Analisis &amp; Deserialisasi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${rowsA1}
                                 </tbody>
                             </table>
                         </div>
@@ -1265,6 +1310,9 @@
                             </div>
                         </div>
 
+                        <!-- CARD TABEL LANGKAH A.1 (Dinamis) -->
+                        ${tabelA1HTML}
+
                         <!-- CARD PERHITUNGAN LANGKAH C.3 (Dinamis) -->
                         ${perhitunganHTML}
 
@@ -1450,7 +1498,7 @@
             }
 
             // Fallback: dinamis load
-            const fileMap = { 1: 'pekan1.js', 2: 'pekan2-1.js', 3: 'pekan2-2.js', 4: 'pekan3.js', 5: 'pekan4.js', 6: 'pekan5.js', 7: 'pekan6.js', 8: 'pekan7.js' };
+            const fileMap = { 1: 'pekan1.js', 2: 'pekan2-1.js', 3: 'pekan2-2.js', 4: 'pekan3.js', 5: 'pekan4.js', 6: 'pekan5.js', 7: 'pekan6.js', 8: 'pekan7.js', 9: 'pekan8.js' };
             const scriptId = `script-mobile-pekan-${pekanNumber}`;
             let scriptElement = document.getElementById(scriptId);
             if (scriptElement) scriptElement.remove();
